@@ -136,49 +136,37 @@
         }
         .gato-interactive:hover { transform: scale(1.5) rotate(-15deg); }
 
-        /* Pétalos negros */
+        /* Pétalos negros mejorados */
         .petalo {
             position: fixed;
-            background-color: #1a1a1a; /* Negro suave */
-            border-radius: 100% 0 100% 0;
-            opacity: 0.7;
+            background: linear-gradient(45deg, #000, #1a1a1a);
+            border-radius: 100% 0 80% 0; /* Forma de hoja */
+            filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
+            z-index: 1;
             pointer-events: none;
-            z-index: 10;
-            animation: caer linear infinite;
         }
         
-        @keyframes caer {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(110vh) rotate(360deg); }
-        }
-        
-        /* El Gatico Interactivo */
+        /* El Gato Caminante */
         #gato-guardian {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 3rem;
+            bottom: 10px;
+            left: -50px; /* Empieza fuera */
+            font-size: 2.5rem;
             cursor: pointer;
-            user-select: none;
-            z-index: 100;
-            transition: transform 0.3s ease;
-        }
-        
-        #gato-guardian:hover {
-            transform: scale(1.2);
+            z-index: 1000;
+            transition: transform 0.1s linear;
+            filter: drop-shadow(0 0 5px var(--accent));
         }
         
         .bocadillo {
             position: fixed;
-            bottom: 80px;
-            right: 30px;
             background: var(--card-bg);
             border: 1px solid var(--accent);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
             display: none;
-            font-family: 'Fira Code', monospace;
+            z-index: 1001;
         }
                 
     </style>
@@ -255,48 +243,95 @@
     <div id="bocadillo" class="bocadillo">¡Miau! (Me gusta este código)</div>
     
     <script>
-        // 1. Lluvia de pétalos negros
-        function crearPetalo() {
-            const petalo = document.createElement('div');
-            petalo.classList.add('petalo');
-            petalo.style.left = Math.random() * 100 + 'vw';
-            petalo.style.width = Math.random() * 10 + 5 + 'px';
-            petale.style.height = petalo.style.width;
-            petalo.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(petalo);
-            setTimeout(() => petalo.remove(), 5000);
+        // --- CONFIGURACIÓN DEL GATO CAMINANTE ---
+        const gato = document.getElementById('gato-guardian');
+        const bocadillo = document.getElementById('bocadillo');
+        let posX = -50;
+        let direccion = 1; // 1 derecha, -1 izquierda
+        
+        function caminar() {
+            posX += 1.5 * direccion;
+            gato.style.left = posX + 'px';
+        
+            // Girar el gato según dirección
+            gato.style.transform = direccion === 1 ? 'scaleX(1)' : 'scaleX(-1)';
+        
+            // Dar la vuelta al llegar a los bordes
+            if (posX > window.innerWidth + 50) direccion = -1;
+            if (posX < -60) direccion = 1;
+        
+            // Posicionar bocadillo sobre el gato
+            bocadillo.style.left = (posX) + 'px';
+            bocadillo.style.bottom = '60px';
+        
+            requestAnimationFrame(caminar);
         }
-        setInterval(crearPetalo, 300);
-    
-        // 2. Interacción con el gato
+        
         function acariciar() {
-            const gato = document.getElementById('gato-guardian');
-            const bocadillo = document.getElementById('bocadillo');
-            
-            gato.innerText = "🐾"; // Cambia pose
+            const mensajes = ["¡Miau!", "Purrr...", "✨", "🖤", "Me gusta este código"];
+            bocadillo.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
             bocadillo.style.display = 'block';
+            gato.innerText = "🐾"; 
             
             setTimeout(() => {
                 gato.innerText = "🐈‍⬛";
                 bocadillo.style.display = 'none';
-            }, 2000);
+            }, 1500);
         }
-    
-        // El canvas de estrellas que ya tenías (mantenlo aquí abajo)
+        
+        // --- CONFIGURACIÓN DE PÉTALOS ---
+        function crearPetalo() {
+            const p = document.createElement('div');
+            p.classList.add('petalo');
+            
+            const size = Math.random() * 15 + 10;
+            p.style.width = size + 'px';
+            p.style.height = (size * 0.6) + 'px';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = '-20px';
+            
+            document.body.appendChild(p);
+        
+            let posTop = -20;
+            let angle = Math.random() * 360;
+            let swing = Math.random() * 2; // Balanceo lateral
+        
+            function bajar() {
+                posTop += 2; // Velocidad de caída
+                angle += 2;
+                const lat = Math.sin(posTop / 20) * 30; // Movimiento zigzag
+                
+                p.style.top = posTop + 'px';
+                p.style.transform = `translateX(${lat}px) rotate(${angle}deg)`;
+        
+                if (posTop < window.innerHeight) {
+                    requestAnimationFrame(bajar);
+                } else {
+                    p.remove();
+                }
+            }
+            bajar();
+        }
+        
+        // Lanzar procesos
+        caminar();
+        setInterval(crearPetalo, 400);
+        
+        // Mantener el fondo de estrellas que ya tenías
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         let particles = [];
-        for(let i=0; i<100; i++) {
+        for(let i=0; i<80; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 2,
-                speed: Math.random() * 0.5
+                speed: Math.random() * 0.3
             });
         }
-        function animate() {
+        function animateStars() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#b100e8';
             particles.forEach(p => {
@@ -306,9 +341,9 @@
                 p.y -= p.speed;
                 if(p.y < 0) p.y = canvas.height;
             });
-            requestAnimationFrame(animate);
+            requestAnimationFrame(animateStars);
         }
-        animate();
+        animateStars();
     </script>
 </body>
 </html>
