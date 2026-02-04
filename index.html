@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:title" content="Ssylley | Fullstack Dev & Artist">
+    <meta property="og:description" content="Explora el universo gótico y digital de Ssylley.">
+    <meta property="og:image" content="https://ssylley.es/preview-image.jpg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
     <title>Ssylley | Dev & Artist</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Fira+Code:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg: #050505;
             --card-bg: #0d0d0d;
-            --accent: #b100e8; /* Púrpura neón gótico */
+            --accent: #b100e8; /* Color Púrpura principal */
             --text: #e0e0e0;
             --dim-text: #666;
             --shadow: 0 0 15px rgba(177, 0, 232, 0.3);
         }
 
+        /* Configuración Global */
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
         body {
@@ -24,12 +33,12 @@
             overflow-x: hidden;
         }
 
-        /* Efecto de partículas/estrellas de fondo */
+        /* Fondo de estrellas dinámico */
         canvas { position: fixed; top: 0; left: 0; z-index: -1; }
-
+        
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        /* Header Estilo Gótico */
+        /* --- HEADER: El Gato y el Título --- */
         header {
             height: 100vh;
             display: flex;
@@ -39,6 +48,44 @@
             text-align: center;
         }
 
+        /* Contenedor del gato: Posicionado sobre las letras 'EY' */
+        .cat-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-left: 37%; 
+            margin-bottom: -52px; 
+            z-index: 100;
+            line-height: 0;
+        }
+
+        /* Animación Pixel Art del Gato */
+        .gato-sleeping {
+            width: 105px; 
+            height: 105px; 
+            background-image: url('images/gatoSleeping1.png'); 
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center bottom;
+            image-rendering: pixelated; /* Mantiene los bordes de los píxeles nítidos */
+            cursor: pointer;
+            filter: drop-shadow(0 0 5px var(--accent));
+            animation: respirar 4s ease-in-out infinite;
+            transition: none;
+        }
+
+        .gato-sleeping.despierto {
+            animation: none;
+            transform: scale(1.05);
+        }
+
+        /* Efecto de respiración suave mientras duerme */
+        @keyframes respirar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Título Principal con Brillo Púrpura */
         h1 {
             font-family: 'Cinzel', serif;
             font-size: clamp(3rem, 10vw, 6rem);
@@ -60,9 +107,9 @@
             margin-top: 10px;
         }
 
-        /* Secciones */
+        /* --- SECCIONES Y TARJETAS --- */
         section { padding: 80px 0; border-bottom: 1px solid #1a1a1a; }
-
+        
         h2 {
             font-family: 'Cinzel', serif;
             font-size: 2rem;
@@ -72,12 +119,11 @@
             align-items: center;
             gap: 15px;
         }
-
+        
         h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--accent), transparent); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
-        /* Cards Estilo Glassmorphism Oscuro */
         .card {
             background: var(--card-bg);
             padding: 30px;
@@ -85,19 +131,16 @@
             border: 1px solid #222;
             transition: 0.4s ease;
         }
-
+        
         .card:hover {
             border-color: var(--accent);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .card h3 { color: var(--accent); margin-bottom: 10px; }
-
         .tag {
             display: inline-block;
             background: #1a1a1a;
-            color: var(--text);
             padding: 4px 10px;
             font-size: 0.75rem;
             border-radius: 3px;
@@ -105,56 +148,22 @@
             font-family: 'Fira Code', monospace;
         }
 
-        /* Sección Gatos & Arte */
-        .art-music {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .cat-box {
-            flex: 1; min-width: 250px;
-            border: 1px dashed var(--dim-text);
-            padding: 20px;
-            text-align: center;
-            font-style: italic;
-        }
-
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            color: var(--dim-text);
-            font-size: 0.9rem;
-        }
-
-        /* Animación del Gato */
-        .gato-interactive {
-            font-size: 2rem;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .gato-interactive:hover { transform: scale(1.5) rotate(-15deg); }
-
-        /* Pétalos negros mejorados */
+        /* --- DECORACIONES Y GATO GUARDIÁN --- */
         .petalo {
             position: fixed;
             background: linear-gradient(45deg, #000, #1a1a1a);
-            border-radius: 100% 0 80% 0; /* Forma de hoja */
+            border-radius: 100% 0 80% 0;
             filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
             z-index: 1;
             pointer-events: none;
         }
         
-        /* El Gato Caminante */
         #gato-guardian {
             position: fixed;
             bottom: 10px;
-            left: -50px; /* Empieza fuera */
+            left: -50px;
             font-size: 2.5rem;
-            cursor: pointer;
             z-index: 1000;
-            transition: transform 0.1s linear;
             filter: drop-shadow(0 0 5px var(--accent));
         }
         
@@ -168,7 +177,8 @@
             display: none;
             z-index: 1001;
         }
-                
+
+        footer { padding: 40px 0; text-align: center; color: var(--dim-text); }
     </style>
 </head>
 <body>
@@ -177,27 +187,16 @@
 
     <div class="container">
         <header>
+            <div class="cat-container">
+                <div id="gato-pixel" class="gato-sleeping" onclick="despertar()"></div>
+            </div>
             <h1>SSYLLEY</h1>
             <div class="typewriter">> Fullstack Dev & Artist _</div>
-            <div class="art-music">
-                <span class="gato-interactive">🐈‍⬛</span>
-                <span class="gato-interactive">🎨</span>
-                <span class="gato-interactive">🎧</span>
-            </div>
         </header>
 
         <section id="sobre-mi">
             <h2>Sobre mí</h2>
-            <p>Soy una desarrolladora apasionada por crear software que no solo sea funcional, sino estéticamente impactante. En mi código busco la precisión de **Java** y la elegancia de **TypeScript**. Fuera de la pantalla, me pierdo dibujando y escuchando música oscura.</p>
-        </section>
-
-        <section id="experiencia">
-            <h2>Experiencia</h2>
-            <div class="card">
-                <h3>Ayuntamiento de Veguillas de la Sierra</h3>
-                <p style="color:var(--dim-text)">Desarrolladora Web (Prácticas) | 2025</p>
-                <p style="margin-top:15px">Desarrollo integral del portal municipal usando **Next.js** y optimización de bases de datos para el ciudadano.</p>
-            </div>
+            <p>Soy una desarrolladora apasionada por crear software estéticamente impactante. En mi código busco la precisión de **Java** y la elegancia de **TypeScript**.</p>
         </section>
 
         <section id="habilidades">
@@ -205,31 +204,11 @@
             <div class="grid">
                 <div class="card">
                     <h3>Backend</h3>
-                    <span class="tag">Java</span> <span class="tag">Spring Boot</span>
-                    <span class="tag">C#</span> <span class="tag">Python</span>
-                    <span class="tag">MySQL/SQL</span>
+                    <span class="tag">Java</span> <span class="tag">Spring Boot</span> <span class="tag">MySQL</span>
                 </div>
                 <div class="card">
                     <h3>Frontend</h3>
-                    <span class="tag">Next.js</span> <span class="tag">Angular</span>
-                    <span class="tag">TypeScript</span> <span class="tag">Tailwind</span>
-                </div>
-                <div class="card">
-                    <h3>Diseño & Otros</h3>
-                    <span class="tag">Figma</span> <span class="tag">Linux</span>
-                    <span class="tag">Git</span> <span class="tag">Scrum</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="dark-side">
-            <h2>The Dark Side</h2>
-            <div class="art-music">
-                <div class="cat-box">
-                    "La música gótica y el dibujo son mi refugio creativo."
-                </div>
-                <div class="cat-box">
-                    Orgullosa dueña de gatos y amante de la estética nocturna.
+                    <span class="tag">Next.js</span> <span class="tag">TypeScript</span> <span class="tag">Tailwind</span>
                 </div>
             </div>
         </section>
@@ -240,110 +219,123 @@
     </div>
 
     <div id="gato-guardian" onclick="acariciar()">🐈‍⬛</div>
-    <div id="bocadillo" class="bocadillo">¡Miau! (Me gusta este código)</div>
+    <div id="bocadillo" class="bocadillo"></div>
     
     <script>
-        // --- CONFIGURACIÓN DEL GATO CAMINANTE ---
-        const gato = document.getElementById('gato-guardian');
-        const bocadillo = document.getElementById('bocadillo');
-        let posX = -50;
-        let direccion = 1; // 1 derecha, -1 izquierda
+        /* 1. LÓGICA DEL GATO PIXEL (HEADER)
+           Intercambia las imágenes para crear la animación de abrir ojos
+        */
+        function despertar() {
+            const gato = document.getElementById('gato-pixel');
+            if (gato.classList.contains('despierto')) return;
+
+            gato.classList.add('despierto');
+
+            const frames = [
+                'images/gatoSleeping1.png', 
+                'images/gatoSleeping2.png', 
+                'images/gatoSleeping3.png', 
+                'images/gatoSleeping4.png'  
+            ];
+
+            let i = 0;
+            const abrirOjos = setInterval(() => {
+                i++;
+                if (i < frames.length) {
+                    gato.style.backgroundImage = `url('${frames[i]}')`;
+                } else {
+                    clearInterval(abrirOjos);
+                    // El gato vuelve a dormirse tras 2 segundos
+                    setTimeout(() => { cerrarOjos(gato, frames); }, 2000);
+                }
+            }, 150);
+        }
+
+        function cerrarOjos(gato, frames) {
+            let i = frames.length - 1;
+            const animarCierre = setInterval(() => {
+                i--;
+                if (i >= 0) {
+                    gato.style.backgroundImage = `url('${frames[i]}')`;
+                } else {
+                    clearInterval(animarCierre);
+                    gato.classList.remove('despierto');
+                }
+            }, 150);
+        }
+
+        /* 2. GATO GUARDIÁN (SISTEMA DE CAMINADO)
+           Mueve el emoji de lado a lado de la pantalla
+        */
+        const gatoG = document.getElementById('gato-guardian');
+        const boca = document.getElementById('bocadillo');
+        let posX = -50; let dir = 1;
         
         function caminar() {
-            posX += 1.5 * direccion;
-            gato.style.left = posX + 'px';
-        
-            // Girar el gato según dirección
-            gato.style.transform = direccion === 1 ? 'scaleX(1)' : 'scaleX(-1)';
-        
-            // Dar la vuelta al llegar a los bordes
-            if (posX > window.innerWidth + 50) direccion = -1;
-            if (posX < -60) direccion = 1;
-        
-            // Posicionar bocadillo sobre el gato
-            bocadillo.style.left = (posX) + 'px';
-            bocadillo.style.bottom = '60px';
-        
+            posX += 1.5 * dir;
+            gatoG.style.left = posX + 'px';
+            gatoG.style.transform = dir === 1 ? 'scaleX(1)' : 'scaleX(-1)';
+            if (posX > window.innerWidth + 50) dir = -1;
+            if (posX < -60) dir = 1;
+            boca.style.left = posX + 'px';
+            boca.style.bottom = '60px';
             requestAnimationFrame(caminar);
         }
         
         function acariciar() {
-            const mensajes = ["¡Miau!", "Purrr...", "✨", "🖤", "Me gusta este código"];
-            bocadillo.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
-            bocadillo.style.display = 'block';
-            gato.innerText = "🐾"; 
-            
-            setTimeout(() => {
-                gato.innerText = "🐈‍⬛";
-                bocadillo.style.display = 'none';
-            }, 1500);
+            const msgs = ["¡Miau!", "Purrr...", "🖤", "Me gusta este código"];
+            boca.innerText = msgs[Math.floor(Math.random() * msgs.length)];
+            boca.style.display = 'block';
+            setTimeout(() => boca.style.display = 'none', 1500);
         }
-        
-        // --- CONFIGURACIÓN DE PÉTALOS ---
+
+        /* 3. EFECTOS VISUALES (PÉTALOS Y ESTRELLAS) */
         function crearPetalo() {
             const p = document.createElement('div');
             p.classList.add('petalo');
-            
             const size = Math.random() * 15 + 10;
-            p.style.width = size + 'px';
-            p.style.height = (size * 0.6) + 'px';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.top = '-20px';
-            
+            p.style.width = size + 'px'; p.style.height = (size * 0.6) + 'px';
+            p.style.left = Math.random() * 100 + 'vw'; p.style.top = '-20px';
             document.body.appendChild(p);
-        
-            let posTop = -20;
-            let angle = Math.random() * 360;
-            let swing = Math.random() * 2; // Balanceo lateral
-        
+            let top = -20;
             function bajar() {
-                posTop += 2; // Velocidad de caída
-                angle += 2;
-                const lat = Math.sin(posTop / 20) * 30; // Movimiento zigzag
-                
-                p.style.top = posTop + 'px';
-                p.style.transform = `translateX(${lat}px) rotate(${angle}deg)`;
-        
-                if (posTop < window.innerHeight) {
-                    requestAnimationFrame(bajar);
-                } else {
-                    p.remove();
-                }
+                top += 2;
+                p.style.top = top + 'px';
+                p.style.transform = `translateX(${Math.sin(top/20)*30}px) rotate(${top}deg)`;
+                if (top < window.innerHeight) requestAnimationFrame(bajar); else p.remove();
             }
             bajar();
         }
-        
-        // Lanzar procesos
-        caminar();
-        setInterval(crearPetalo, 400);
-        
-        // Mantener el fondo de estrellas que ya tenías
+
+        /* Animación del fondo con Canvas */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let particles = [];
-        for(let i=0; i<80; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 2,
-                speed: Math.random() * 0.3
-            });
-        }
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        let stars = Array(80).fill().map(() => ({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            size: Math.random() * 2, speed: Math.random() * 0.3
+        }));
         function animateStars() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#b100e8';
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-                p.y -= p.speed;
-                if(p.y < 0) p.y = canvas.height;
+            stars.forEach(s => {
+                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
+                s.y -= s.speed; if(s.y < 0) s.y = canvas.height;
             });
             requestAnimationFrame(animateStars);
         }
+
+        // Inicialización de efectos
+        caminar();
         animateStars();
+        setInterval(crearPetalo, 400);
     </script>
+
+    <div style="display:none;">
+        <img src="images/gatoSleeping1.png">
+        <img src="images/gatoSleeping2.png">
+        <img src="images/gatoSleeping3.png">
+        <img src="images/gatoSleeping4.png">
+    </div>
 </body>
 </html>
