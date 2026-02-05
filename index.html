@@ -1,398 +1,395 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Ssylley | Fullstack Dev & Artist">
-    <meta property="og:description" content="Explora el universo gótico y digital de Ssylley.">
-    <meta property="og:image" content="https://ssylley.es/preview-image.jpg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Ssylley | Dev & Artist</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Fira+Code:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- DESIGN SYSTEM --- */
-        :root {
-            --bg: #050505;
-            --card-bg: #0d0d0d;
-            --accent: #b100e8;
-            --text: #e0e0e0;
-            --dim-text: #666;
-            --shadow: 0 0 15px rgba(177, 0, 232, 0.3);
-            --transition: 0.4s ease;
-        }
-
-        /* --- RESET & BASE --- */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            cursor: crosshair; 
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        canvas { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            z-index: -1; 
-        }
-
-        .container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-        }
-
-        /* --- HERO SECTION & INTERACTIVE CAT --- */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .cat-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 100;
-            line-height: 0;
-            /* El padding se ajusta en Media Queries según el tamaño del h1 */
-        }
-
-        .gato-sleeping {
-            background-image: url('images/gatoSleeping1.png'); 
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center bottom;
-            image-rendering: pixelated;
-            cursor: pointer;
-            filter: drop-shadow(0 0 5px var(--accent));
-            animation: respirar 4s ease-in-out infinite;
-        }
-
-        .gato-sleeping.despierto {
-            animation: none;
-            transform: scale(1.05);
-        }
-
-        @keyframes respirar {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
-            color: var(--accent);
-            text-shadow: var(--shadow);
-            letter-spacing: 8px;
-            animation: pulse 4s infinite alternate;
-        }
-
-        @keyframes pulse {
-            from { opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent)); }
-            to { opacity: 1; filter: drop-shadow(0 0 20px var(--accent)); }
-        }
-
-        .typewriter {
-            font-family: 'Fira Code', monospace;
-            color: var(--dim-text);
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-
-        /* --- MAIN SECTIONS --- */
-        section { 
-            padding: 80px 0; 
-            border-bottom: 1px solid #1a1a1a; 
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        h2::after { 
-            content: ""; 
-            flex: 1; 
-            height: 1px; 
-            background: linear-gradient(to right, var(--accent), transparent); 
-        }
-
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 25px; 
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 4px;
-            border: 1px solid #222;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .tag {
-            display: inline-block;
-            background: #1a1a1a;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            border-radius: 3px;
-            margin: 5px 5px 0 0;
-            font-family: 'Fira Code', monospace;
-        }
-
-        /* --- DECORATIVE & FLOATING ELEMENTS --- */
-        .petalo {
-            position: fixed;
-            background: linear-gradient(45deg, #000, #1a1a1a);
-            border-radius: 100% 0 80% 0;
-            filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
-            z-index: 1;
-            pointer-events: none;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Ssylley | Fullstack Dev & Artist">
+        <meta property="og:description" content="Explora el universo gótico y digital de Ssylley.">
+        <meta property="og:image" content="https://ssylley.es/preview-image.jpg">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Ssylley | Dev & Artist</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Fira+Code:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
         
-        #gato-guardian {
-            position: fixed;
-            bottom: 10px;
-            left: -50px;
-            font-size: 2.5rem;
-            z-index: 1000;
-            filter: drop-shadow(0 0 5px var(--accent));
-        }
-        
-        .bocadillo {
-            position: fixed;
-            background: var(--card-bg);
-            border: 1px solid var(--accent);
-            padding: 5px 10px;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            display: none;
-            z-index: 1001;
-        }
-
-        footer { 
-            padding: 40px 0; 
-            text-align: center; 
-            color: var(--dim-text); 
-        }
-
-        /* --- BREAKPOINTS: CAT POSITIONING OPTIMIZATION --- */
-
-        /* Laptops / Desktop */
-        @media (min-width: 1025px) {
-            .cat-container { padding-left: 296px; margin-bottom: -51px; }
-            .gato-sleeping { width: 100px; height: 100px; }
-        }
-
-        /* Medium Screens (851px - 1024px) */
-        @media (max-width: 1024px) and (min-width: 851px) {
-            .cat-container { padding-left: 289px; margin-bottom: -50px; }
-            .gato-sleeping { width: 100px; height: 100px; }
-        }
-
-        /* Small Laptops / Big Tablets (741px - 850px) */
-        @media (max-width: 850px) and (min-width: 741px) {
-            .cat-container { padding-left: 250px; margin-bottom: -45px; }
-            .gato-sleeping { width: 87px; height: 87px; }
-        }
-
-        /* Tablets / Large Mobiles (601px - 740px) */
-        @media (max-width: 740px) and (min-width: 601px) {
-            .cat-container { padding-left: 232px; margin-bottom: -38px; }
-            .gato-sleeping { width: 75px; height: 75px; }
-        }
-
-        /* Mobile Devices */
-        @media (max-width: 600px) {
-            .cat-container { padding-left: 160px; margin-bottom: -30px; }
-            .gato-sleeping { width: 65px; height: 65px; }
-            h1 { font-size: 3.2rem; letter-spacing: 4px; }
-        }
-    </style>
-</head>
-<body>
-
-    <canvas id="bg-canvas"></canvas>
-
-    <div class="container">
-        <header>
-            <div class="cat-container">
-                <div id="gato-pixel" class="gato-sleeping" onclick="despertar()"></div>
-            </div>
-            <h1>SSYLLEY</h1>
-            <div class="typewriter">> Fullstack Dev & Artist _</div>
-        </header>
-
-        <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-            <p>Soy una desarrolladora apasionada por crear software estéticamente impactante. En mi código busco la precisión de **Java** y la elegancia de **TypeScript**.</p>
-        </section>
-
-        <section id="habilidades">
-            <h2>Habilidades</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Backend</h3>
-                    <span class="tag">Java</span> <span class="tag">Spring Boot</span> <span class="tag">MySQL</span>
-                </div>
-                <div class="card">
-                    <h3>Frontend</h3>
-                    <span class="tag">Next.js</span> <span class="tag">TypeScript</span> <span class="tag">Tailwind</span>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>Hecho con 🖤 y código por Ssylley | 2026</p>
-        </footer>
-    </div>
-
-    <div id="gato-guardian" onclick="acariciar()">🐈‍⬛</div>
-    <div id="bocadillo" class="bocadillo"></div>
-
-    <script>
-        /* --- 1. SPRITE ANIMATION ENGINE (Header Cat) --- */
-        function despertar() {
-            const gato = document.getElementById('gato-pixel');
-            if (gato.classList.contains('despierto')) return;
-
-            gato.classList.add('despierto');
-            const frames = [
-                'images/gatoSleeping1.png', 
-                'images/gatoSleeping2.png', 
-                'images/gatoSleeping3.png', 
-                'images/gatoSleeping4.png'
-            ];
-
-            let i = 0;
-            const abrirOjos = setInterval(() => {
-                i++;
-                if (i < frames.length) {
-                    gato.style.backgroundImage = `url('${frames[i]}')`;
-                } else {
-                    clearInterval(abrirOjos);
-                    setTimeout(() => cerrarOjos(gato, frames), 2000);
-                }
-            }, 150);
-        }
-
-        function cerrarOjos(gato, frames) {
-            let i = frames.length - 1;
-            const animarCierre = setInterval(() => {
-                i--;
-                if (i >= 0) {
-                    gato.style.backgroundImage = `url('${frames[i]}')`;
-                } else {
-                    clearInterval(animarCierre);
-                    gato.classList.remove('despierto');
-                }
-            }, 150);
-        }
-
-        /* --- 2. AMBIENT WALKING CAT --- */
-        const gatoG = document.getElementById('gato-guardian');
-        const boca = document.getElementById('bocadillo');
-        let posX = -50; let dir = 1;
-        
-        function caminar() {
-            posX += 1.5 * dir;
-            gatoG.style.left = posX + 'px';
-            gatoG.style.transform = dir === 1 ? 'scaleX(1)' : 'scaleX(-1)';
-            if (posX > window.innerWidth + 50) dir = -1;
-            if (posX < -60) dir = 1;
-            boca.style.left = posX + 'px';
-            boca.style.bottom = '60px';
-            requestAnimationFrame(caminar);
-        }
-        
-        function acariciar() {
-            const msgs = ["¡Miau!", "Purrr...", "🖤", "Me gusta este código", "¡Hola!"];
-            boca.innerText = msgs[Math.floor(Math.random() * msgs.length)];
-            boca.style.display = 'block';
-            setTimeout(() => boca.style.display = 'none', 1500);
-        }
-
-        /* --- 3. BACKGROUND EFFECTS (Canvas & Particles) --- */
-        function crearPetalo() {
-            const p = document.createElement('div');
-            p.classList.add('petalo');
-            const size = Math.random() * 15 + 10;
-            p.style.width = size + 'px'; p.style.height = (size * 0.6) + 'px';
-            p.style.left = Math.random() * 100 + 'vw'; p.style.top = '-20px';
-            document.body.appendChild(p);
-            let top = -20;
-            function bajar() {
-                top += 2;
-                p.style.top = top + 'px';
-                p.style.transform = `translateX(${Math.sin(top/20)*30}px) rotate(${top}deg)`;
-                if (top < window.innerHeight) requestAnimationFrame(bajar); else p.remove();
+        <style>
+            /* --- DISEÑO DEL SISTEMA --- */
+            :root {
+                --bg: #050505;
+                --card-bg: #0d0d0d;
+                --accent: #b100e8;
+                --text: #e0e0e0;
+                --dim-text: #666;
+                --shadow: 0 0 15px rgba(177, 0, 232, 0.3);
             }
-            bajar();
-        }
 
-        // Starfield System
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        let stars = Array(80).fill().map(() => ({
-            x: Math.random() * canvas.width, 
-            y: Math.random() * canvas.height,
-            size: Math.random() * 2, 
-            speed: Math.random() * 0.3
-        }));
+            /* --- BASE --- */
+            * { 
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                cursor: crosshair; 
+            }
 
-        function animateStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#b100e8';
-            stars.forEach(s => {
-                ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
-                s.y -= s.speed; if(s.y < 0) s.y = canvas.height;
-            });
-            requestAnimationFrame(animateStars);
-        }
+            body {
+                background-color: var(--bg);
+                color: var(--text);
+                font-family: 'Inter', sans-serif;
+                overflow-x: hidden;
+            }
 
-        /* --- INITIALIZATION --- */
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+            canvas { 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                z-index: -1; 
+            }
+            .container { 
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 20px; 
+            }
+
+            /* --- HEADER Y GATO DURMIENTE --- */
+            header {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .cat-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                padding-left: 120px;
+                margin-bottom: -50px; 
+                z-index: 100;
+                line-height: 0;
+            }
+
+            .gato-sleeping {
+                width: 12vw;
+                height: 12vw; 
+                max-width: 110px;
+                min-width: 60px; 
+                background-image: url('images/gatoSleeping1.png'); 
+                background-repeat: no-repeat;
+                background-size: contain; 
+                background-position: center bottom;
+                image-rendering: pixelated;
+                cursor: pointer;
+                filter: drop-shadow(0 0 5px var(--accent));
+                animation: respirar 4s ease-in-out infinite;
+                transition: none;
+            }
+
+            .gato-sleeping.despierto {
+                animation: none;
+                transform: scale(1.05);
+            }
+
+            @keyframes respirar {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+
+            h1 {
+                font-family: 'Cinzel', serif;
+                font-size: clamp(3rem, 10vw, 6rem);
+                color: var(--accent);
+                text-shadow: var(--shadow);
+                letter-spacing: 8px;
+                animation: pulse 4s infinite alternate;
+            }
+
+            @keyframes pulse {
+                from { opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent)); }
+                to { opacity: 1; filter: drop-shadow(0 0 20px var(--accent)); }
+            }
+
+            .typewriter {
+                font-family: 'Fira Code', monospace;
+                color: var(--dim-text);
+                font-size: 1.1rem;
+                margin-top: 10px;
+            }
+
+            /* --- SECCIONES Y CARDS --- */
+            section { 
+                padding: 80px 0; 
+                border-bottom: 1px solid #1a1a1a; 
+            }
+            
+            h2 {
+                font-family: 'Cinzel', serif;
+                font-size: 2rem;
+                color: var(--accent);
+                margin-bottom: 40px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            h2::after { 
+                content: ""; 
+                flex: 1; 
+                height: 1px; 
+                background: linear-gradient(to right, var(--accent), transparent); 
+            }
+
+            .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+
+            .card {
+                background: var(--card-bg);
+                padding: 30px;
+                border-radius: 4px;
+                border: 1px solid #222;
+                transition: 0.4s ease;
+            }
+            
+            .card:hover {
+                border-color: var(--accent);
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+            .tag {
+                display: inline-block;
+                background: #1a1a1a;
+                padding: 4px 10px;
+                font-size: 0.75rem;
+                border-radius: 3px;
+                margin: 5px 5px 0 0;
+                font-family: 'Fira Code', monospace;
+            }
+
+            /* --- ELEMENTOS DECORATIVOS --- */
+            .petalo {
+                position: fixed;
+                background: linear-gradient(45deg, #000, #1a1a1a);
+                border-radius: 100% 0 80% 0;
+                filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
+                z-index: 1;
+                pointer-events: none;
+            }
+            
+            #gato-guardian {
+                position: fixed;
+                bottom: 10px;
+                left: -50px;
+                font-size: 2.5rem;
+                z-index: 1000;
+                filter: drop-shadow(0 0 5px var(--accent));
+            }
+            
+            .bocadillo {
+                position: fixed;
+                background: var(--card-bg);
+                border: 1px solid var(--accent);
+                padding: 5px 10px;
+                border-radius: 8px;
+                font-size: 0.7rem;
+                display: none;
+                z-index: 1001;
+            }
+
+            footer { 
+                padding: 40px 0; 
+                text-align: center; 
+                color: var(--dim-text); 
+            }
+            
+            /* --- BREAKPOINTS: Optimización de la posición del gato--- */
+
+            /* 1. Pantallas Grandes / Laptops (Desktop) */
+            @media (min-width: 1025px) {
+                .cat-container { padding-left: 296px; margin-bottom: -51px; }
+                .gato-sleeping { width: 100px; height: 100px; }
+            }
+
+            /* 2. Tablets y Pantallas Medianas */
+            @media (max-width: 1024px) and (min-width: 851px) {
+                .cat-container { padding-left: 289px; margin-bottom: -50px; }
+                .gato-sleeping { width: 100px; height: 100px; }
+            }
+
+            /* 2. Tablets y Pantallas Medianas */
+            @media (max-width: 850px) and (min-width: 741px) {
+                .cat-container { padding-left: 250px; margin-bottom: -45px; }
+                .gato-sleeping { width: 87px; height: 87px; }
+            }
+
+            @media (max-width: 740px) and (min-width: 601px) {
+                .cat-container { padding-left: 232px; margin-bottom: -38px; }
+                .gato-sleeping { width: 75px; height: 75px; }
+            }
+
+            /* 3. Móvil Horizontal / Tablets pequeñas */
+            @media (max-width: 600px) {
+                .cat-container { padding-left: 160px; margin-bottom: -30px; }
+                .gato-sleeping { width: 65px; height: 65px; }
+                h1 { font-size: 3.2rem; letter-spacing: 4px; }
+            }
+        </style>
+    </head>
+    <body>
+
+        <canvas id="bg-canvas"></canvas>
+
+        <div class="container">
+            <header>
+                <div class="cat-container">
+                    <div id="gato-pixel" class="gato-sleeping" onclick="despertar()"></div>
+                </div>
+                <h1>SSYLLEY</h1>
+                <div class="typewriter">> Fullstack Dev & Artist _</div>
+            </header>
+
+            <section id="sobre-mi">
+                <h2>Sobre mí</h2>
+                <p>Soy una desarrolladora apasionada por crear software estéticamente impactante. En mi código busco la precisión de **Java** y la elegancia de **TypeScript**.</p>
+            </section>
+
+            <section id="habilidades">
+                <h2>Habilidades</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Backend</h3>
+                        <span class="tag">Java</span> <span class="tag">Spring Boot</span> <span class="tag">MySQL</span>
+                    </div>
+                    <div class="card">
+                        <h3>Frontend</h3>
+                        <span class="tag">Next.js</span> <span class="tag">TypeScript</span> <span class="tag">Tailwind</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>Hecho con 🖤 y código por Ssylley | 2026</p>
+            </footer>
+        </div>
+
+        <div id="gato-guardian" onclick="acariciar()">🐈‍⬛</div>
+        <div id="bocadillo" class="bocadillo"></div>
         
-        caminar();
-        animateStars();
-        setInterval(crearPetalo, 400);
-    </script>
+        <script>
+            // 1. GATO DURMIENTE ANIMACIÓN
+            function despertar() {
+                const gato = document.getElementById('gato-pixel');
+                if (gato.classList.contains('despierto')) return;
 
+                gato.classList.add('despierto');
+
+                const frames = [
+                    'images/gatoSleeping1.png', // Ojos cerrados
+                    'images/gatoSleeping2.png', // Entornados
+                    'images/gatoSleeping3.png', // Casi abiertos
+                    'images/gatoSleeping4.png'  // Mirando a cámara
+                ];
+
+                let i = 0;
+                const abrirOjos = setInterval(() => {
+                    i++;
+                    if (i < frames.length) {
+                        gato.style.backgroundImage = `url('${frames[i]}')`;
+                    } else {
+                        clearInterval(abrirOjos);
+                        setTimeout(() => {
+                            cerrarOjos(gato, frames);
+                        }, 2000);
+                    }
+                }, 150);
+            }
+
+            function cerrarOjos(gato, frames) {
+                let i = frames.length - 1;
+                const animarCierre = setInterval(() => {
+                    i--;
+                    if (i >= 0) {
+                        gato.style.backgroundImage = `url('${frames[i]}')`;
+                    } else {
+                        clearInterval(animarCierre);
+                        gato.classList.remove('despierto');
+                    }
+                }, 150);
+            }
+
+            // 2. GATO GUARDIÁN (Caminante)
+            const gatoG = document.getElementById('gato-guardian');
+            const boca = document.getElementById('bocadillo');
+            let posX = -50; let dir = 1;
+            
+            function caminar() {
+                posX += 1.5 * dir;
+                gatoG.style.left = posX + 'px';
+                gatoG.style.transform = dir === 1 ? 'scaleX(1)' : 'scaleX(-1)';
+                if (posX > window.innerWidth + 50) dir = -1;
+                if (posX < -60) dir = 1;
+                boca.style.left = posX + 'px';
+                boca.style.bottom = '60px';
+                requestAnimationFrame(caminar);
+            }
+            
+            function acariciar() {
+                const msgs = ["¡Miau!", "Purrr...", "🖤", "Me gusta este código"];
+                boca.innerText = msgs[Math.floor(Math.random() * msgs.length)];
+                boca.style.display = 'block';
+                setTimeout(() => boca.style.display = 'none', 1500);
+            }
+
+            // 3. PÉTALOS Y ESTRELLAS (Efectos del fondo)
+            function crearPetalo() {
+                const p = document.createElement('div');
+                p.classList.add('petalo');
+                const size = Math.random() * 15 + 10;
+                p.style.width = size + 'px'; p.style.height = (size * 0.6) + 'px';
+                p.style.left = Math.random() * 100 + 'vw'; p.style.top = '-20px';
+                document.body.appendChild(p);
+                let top = -20;
+                function bajar() {
+                    top += 2;
+                    p.style.top = top + 'px';
+                    p.style.transform = `translateX(${Math.sin(top/20)*30}px) rotate(${top}deg)`;
+                    if (top < window.innerHeight) requestAnimationFrame(bajar); else p.remove();
+                }
+                bajar();
+            }
+
+            // Sistema del campo de estrellas
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            let stars = Array(80).fill().map(() => ({
+                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                size: Math.random() * 2, speed: Math.random() * 0.3
+            }));
+            
+            function animateStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#b100e8';
+                stars.forEach(s => {
+                    ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
+                    s.y -= s.speed; if(s.y < 0) s.y = canvas.height;
+                });
+                requestAnimationFrame(animateStars);
+            }
+
+            /* --- INICIALIZACIÓN --- */
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+            
+            caminar();
+            animateStars();
+            setInterval(crearPetalo, 400);
+        </script>
+    </body>
     <div style="display:none;">
-        <img src="images/gatoSleeping1.png" alt="pre">
-        <img src="images/gatoSleeping2.png" alt="pre">
-        <img src="images/gatoSleeping3.png" alt="pre">
-        <img src="images/gatoSleeping4.png" alt="pre">
+        <img src="images/gatoSleeping1.png">
+        <img src="images/gatoSleeping2.png">
+        <img src="images/gatoSleeping3.png">
+        <img src="images/gatoSleeping4.png">
     </div>
-</body>
 </html>
