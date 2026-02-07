@@ -1,3 +1,96 @@
+/* --- CREACIÓN DE PÉTALOS --- */
+function crearPetalo() {
+    // Si el usuario no está viendo la pestaña, no creamos pétalos
+    if (document.hidden) return;
+
+    // Crear un nuevo div para el pétalo
+    const p = document.createElement('div');
+    p.classList.add('petalo');
+
+    // Tamaño aleatorio para dar variedad (entre 10px y 16px de ancho)
+    const size = Math.random() * 6 + 10;
+    p.style.width = size + 'px'; 
+    p.style.height = (size * 1.4) + 'px';
+
+    // Posición inicial aleatoria (nacen en la parte superior)
+    let left = Math.random() * (window.innerWidth * 3 - 100);
+    let top = -30;
+    let angulo = 0;
+
+    // Aplicar la posición inicial
+    p.style.left = left + 'px';
+    p.style.top = top + 'px';
+
+    // Añadir el pétalo al cuerpo del documento
+    document.body.appendChild(p);
+
+    // Función para animar la caída del pétalo
+    function caer() {
+        top += 1.5;         // Velocidad de bajada
+        left -= 1.2;        // Empuje del viento hacia la izquierda
+        angulo += 0.05;     // Balanceo
+
+        // Actualizar la posición del pétalo
+        p.style.top = top + 'px';
+        // Combinar la posición diagonal con el balanceo del seno
+        p.style.left = (left + Math.sin(angulo) * 20) + 'px';
+
+        // Rotación elegante mientras cae
+        p.style.transform = `rotate(${top * 0.5}deg)`;
+        
+        // Si el pétalo se sale de la pantalla, se borra
+        if (top < window.innerHeight + 50 && left > -100) {
+            requestAnimationFrame(caer);
+        } else {
+            p.remove();
+        }
+    }
+    // Iniciar la animación de caída
+    caer();
+}
+
+/* --- ANIMACIÓN DE ESTRELLAS EN EL FONDO --- */
+const canvas = document.getElementById('bg-canvas');
+// Configuración inicial del canvas y creación de estrellas
+const ctx = canvas.getContext('2d');
+// Ajustamos el tamaño del canvas al tamaño inicial de la ventana
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+// Creamos un array de estrellas con posiciones, tamaños y velocidades aleatorias
+let stars = Array(80).fill().map(() => ({
+    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+    size: Math.random() * 2, speed: Math.random() * 0.3
+}));
+
+// Función para animar las estrellas
+function animateStars() {
+    // Limpiar el dibujo anterior para pintar el nuevo (para crear el movimiento)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // El color de las estrellas
+    ctx.fillStyle = '#b100e8';
+    stars.forEach(s => {
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
+
+        // Las estrellas suben un poquito en cada paso (según su velocidad)
+        s.y -= s.speed; 
+        
+        // Si una estrella se sale por arriba, la mandamos abajo para que vuelva a empezar
+        if(s.y < 0) s.y = canvas.height;
+    });
+    // El navegador que vuelve a ejecutar esta función lo más rápido posible
+    requestAnimationFrame(animateStars);
+}
+
+// Inicio de la animación de estrellas y creación de pétalos cada 400ms
+animateStars();
+setInterval(crearPetalo, 400);
+
+// Ajustar canvas si se cambia el tamaño de ventana
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
 /* --- DICCIONARIO DE TRADUCCIONES --- */
 const translations = {
     es: {
@@ -207,99 +300,6 @@ toggle.addEventListener('change', () => {
     }
 });
 
-/* --- CREACIÓN DE PÉTALOS --- */
-function crearPetalo() {
-    // Si el usuario no está viendo la pestaña, no creamos pétalos
-    if (document.hidden) return;
-
-    // Crear un nuevo div para el pétalo
-    const p = document.createElement('div');
-    p.classList.add('petalo');
-
-    // Tamaño aleatorio para dar variedad (entre 10px y 16px de ancho)
-    const size = Math.random() * 6 + 10;
-    p.style.width = size + 'px'; 
-    p.style.height = (size * 1.4) + 'px';
-
-    // Posición inicial aleatoria (nacen en la parte superior)
-    let left = Math.random() * (window.innerWidth * 3 - 100);
-    let top = -30;
-    let angulo = 0;
-
-    // Aplicar la posición inicial
-    p.style.left = left + 'px';
-    p.style.top = top + 'px';
-
-    // Añadir el pétalo al cuerpo del documento
-    document.body.appendChild(p);
-
-    // Función para animar la caída del pétalo
-    function caer() {
-        top += 1.5;         // Velocidad de bajada
-        left -= 1.2;        // Empuje del viento hacia la izquierda
-        angulo += 0.05;     // Balanceo
-
-        // Actualizar la posición del pétalo
-        p.style.top = top + 'px';
-        // Combinar la posición diagonal con el balanceo del seno
-        p.style.left = (left + Math.sin(angulo) * 20) + 'px';
-
-        // Rotación elegante mientras cae
-        p.style.transform = `rotate(${top * 0.5}deg)`;
-        
-        // Si el pétalo se sale de la pantalla, se borra
-        if (top < window.innerHeight + 50 && left > -100) {
-            requestAnimationFrame(caer);
-        } else {
-            p.remove();
-        }
-    }
-    // Iniciar la animación de caída
-    caer();
-}
-
-/* --- ANIMACIÓN DE ESTRELLAS EN EL FONDO --- */
-const canvas = document.getElementById('bg-canvas');
-// Configuración inicial del canvas y creación de estrellas
-const ctx = canvas.getContext('2d');
-// Ajustamos el tamaño del canvas al tamaño inicial de la ventana
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-// Creamos un array de estrellas con posiciones, tamaños y velocidades aleatorias
-let stars = Array(80).fill().map(() => ({
-    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-    size: Math.random() * 2, speed: Math.random() * 0.3
-}));
-
-// Función para animar las estrellas
-function animateStars() {
-    // Limpiar el dibujo anterior para pintar el nuevo (para crear el movimiento)
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // El color de las estrellas
-    ctx.fillStyle = '#b100e8';
-    stars.forEach(s => {
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
-
-        // Las estrellas suben un poquito en cada paso (según su velocidad)
-        s.y -= s.speed; 
-        
-        // Si una estrella se sale por arriba, la mandamos abajo para que vuelva a empezar
-        if(s.y < 0) s.y = canvas.height;
-    });
-    // El navegador que vuelve a ejecutar esta función lo más rápido posible
-    requestAnimationFrame(animateStars);
-}
-
-// Inicio de la animación de estrellas y creación de pétalos cada 400ms
-animateStars();
-setInterval(crearPetalo, 400);
-
-// Ajustar canvas si se cambia el tamaño de ventana
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
 /* --- LÓGICA DEL GATO DEL HEADER --- */
 function despertar() {
     // Seleccionamos el gato y el bocadillo
@@ -363,6 +363,27 @@ function mostrarBocadillo(elemento, frases) {
     elemento.style.display = 'block';
 }
 
+/* --- LÓGICA DE LA FLECHA DE SCROLL DEL HEADER --- */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Seleccionar la flecha por su clase
+    const flecha = document.querySelector('.scroll-indicator');
+
+    // 2. Verificar que la flecha exista para evitar errores
+    if (flecha) {
+        flecha.addEventListener('click', () => {
+            // 3. Buscar la sección destino
+            const seccionDestino = document.getElementById('sobre-mi');
+
+            // 4. Si la sección existe, hacer el scroll suave
+            if (seccionDestino) {
+                seccionDestino.scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }
+        });
+    }
+});
+
 /* --- LÓGICA DE LAS SECCIONES --- */
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -375,3 +396,29 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observamos cada sección del documento para aplicar la animación cuando entren en el visor
 document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+/* --- LÓGICA DE LOS ENLACES DE EMAIL --- */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Configuración
+    const miCorreo = "arnasledesmasilvia@gmail.com";
+    
+    // 2. Seleccionr TODOS los enlaces que tengan la clase 'email-link'
+    const botonesEmail = document.querySelectorAll('.email-link');
+
+    // 3. Detectar si es móvil
+    const esMovil = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    // 4. Recorrer cada botón para aplicarle la lógica
+    botonesEmail.forEach(boton => {
+        if (esMovil) {
+            // EN MÓVIL: Usa la app de correo por defecto
+            boton.href = `mailto:${miCorreo}`;
+            // Quitamos el target="_blank" para que no abra pestañas vacías en el móvil
+            boton.removeAttribute('target');
+        } else {
+            // EN PC: Abre Gmail en una pestaña nueva para redactar
+            boton.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${miCorreo}`;
+            boton.target = "_blank";
+        }
+    });
+});
