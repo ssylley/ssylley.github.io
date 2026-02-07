@@ -29,12 +29,18 @@
     box-sizing: border-box; 
 }
 
-/* --- ESTILOS BASE DEL BODY--- */
+/* --- ESTILOS BASE DEL HTML Y BODY--- */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
 }
 
 /* Fondo de estrellas animado */
@@ -1147,6 +1153,7 @@ h2::after {
     justify-content: center;
     gap: 50px;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 /* El avatar del muñeco, con un efecto de pixelado y un brillo lila detrás */
