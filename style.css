@@ -29,7 +29,11 @@
     box-sizing: border-box; 
 }
 
-/* --- ESTILOS BASE DEL BODY--- */
+/* --- ESTILOS BASE DEL HTML Y BODY--- */
+html {
+    scrollbar-gutter: stable both-edges;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text);
@@ -37,7 +41,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Evitamos que cualquier elemento pueda causar scroll horizontal */
+/* Evitar que cualquier elemento pueda causar scroll horizontal */
 html, body {
     max-width: 100%;
     overflow-x: hidden;
@@ -1178,10 +1182,6 @@ h2::after {
         font-size: 1.3rem;
         margin-right: 15px;
     }
-    .info-box {
-        min-width: 0;
-        width: 100%;
-    }
     .contact-wrapper-flex {
         flex-direction: column;
         text-align: center;
@@ -1222,6 +1222,7 @@ h2::after {
 .info-box {
     flex: 1;
     min-width: 0;
+    padding-right: 10px;
 }
 
 /* Títulos dentro de la info */
@@ -1236,12 +1237,14 @@ h2::after {
 /* Textos dentro de la info */
 .info-box p {
     color: #aaa;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-family: 'Fira Code', monospace;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
+    display: block;
 }
 
 /* La flechita de cada tarjeta */
