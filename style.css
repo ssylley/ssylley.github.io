@@ -220,9 +220,11 @@ header {
 /* --- El bocadillo del gato --- */
 .bocadillo {
     position: absolute;
-    bottom: 85%; 
-    left: 65%;
+    bottom: 100%; 
+    left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 15px;
+    top: auto;
     background: #000;
     border: 1px solid var(--accent);
     padding: 10px 15px;
