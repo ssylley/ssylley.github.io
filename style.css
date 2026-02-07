@@ -1139,6 +1139,7 @@ h2::after {
 
 /* El avatar del muñeco, con un efecto de pixelado y un brillo lila detrás */
 .pixel-avatar {
+    margin-top: 27.5px;
     width: 250px;
     height: auto;
     image-rendering: pixelated;
