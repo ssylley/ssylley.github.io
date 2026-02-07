@@ -223,7 +223,7 @@ header {
     bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 8px;
+    margin-bottom: 3px;
     top: auto;
     background: #000;
     border: 1px solid var(--accent);
@@ -335,8 +335,8 @@ header {
         border-radius: 8px;
     }
     .bocadillo::after {
-        bottom: -6px;
-        border-width: 6px 6px 0;
+        bottom: -5px;
+        border-width: 5px 5px 0;
     }
 }
 
@@ -344,11 +344,11 @@ header {
     .bocadillo {
         font-size: 0.5rem; 
         padding: 5px 9px;
-        border-radius: 8px;
+        border-radius: 6px;
     }
     .bocadillo::after {
-        bottom: -5px;
-        border-width: 5px 5px 0;
+        bottom: -4px;
+        border-width: 4px 4px 0;
     }
 }
 
@@ -357,11 +357,11 @@ header {
     .bocadillo {
         font-size: 0.4rem; 
         padding: 4px 8px;
-        border-radius: 8px;
+        border-radius: 6px;
     }
     .bocadillo::after {
-        bottom: -4px;
-        border-width: 4px 4px 0;
+        bottom: -3px;
+        border-width: 3px 3px 0;
     }
 }
 
