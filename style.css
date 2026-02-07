@@ -1168,31 +1168,6 @@ h2::after {
     }
 }
 
-/* Ajuste para móvil */
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    .contact-card {
-        padding: 15px; 
-    }
-    .icon-box {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-        margin-right: 15px;
-    }
-    .contact-wrapper-flex {
-        flex-direction: column;
-        text-align: center;
-    }
-    .pixel-avatar {
-        width: 170px;
-        margin-top: 10px;
-        margin-bottom: -4px;
-    }
-}
-
 /* Caja del Icono */
 .icon-box {
     width: 55px;
@@ -1223,6 +1198,10 @@ h2::after {
     flex: 1;
     min-width: 0;
     padding-right: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Títulos dentro de la info */
@@ -1244,6 +1223,7 @@ h2::after {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+    max-width: 100%;
     display: block;
 }
 
@@ -1260,6 +1240,41 @@ h2::after {
     color: var(--accent);
     transform: translateX(5px);
     text-shadow: 0 0 8px var(--accent);
+}
+
+/* Ajuste para móvil */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-card {
+        padding: 15px 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .icon-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+    .info-box p {
+        font-size: 0.75rem;
+    }
+    .arrow {
+        margin-left: 10px;
+        font-size: 1rem;
+    }
+    .contact-wrapper-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    .pixel-avatar {
+        width: 170px;
+        margin-top: 10px;
+        margin-bottom: -4px;
+    }
 }
 
 /* --- FOOTER E ICONOS SOCIALES --- */
