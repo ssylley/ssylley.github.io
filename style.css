@@ -321,7 +321,7 @@ header {
 @media (max-width: 850px) and (min-width: 741px) {
    .bocadillo {
         font-size: 0.6rem; 
-        padding: 7px 10px;
+        padding: 8px 10px;
         border-radius: 8px;
         bottom: 85%; 
         margin-bottom: 2px;
@@ -336,7 +336,7 @@ header {
 @media (max-width: 740px) and (min-width: 601px) {
     .bocadillo {
         font-size: 0.5rem; 
-        padding: 5px 8px;
+        padding: 6px 8px;
         border-radius: 6px;
         bottom: 85%; 
         margin-bottom: 2;
@@ -352,7 +352,7 @@ header {
 @media (max-width: 600px) {
     .bocadillo {
         font-size: 0.5rem; 
-        padding: 5px 8px;
+        padding: 6px 8px;
         border-radius: 6px;
         bottom: 80%; 
         margin-bottom: 1;
