@@ -223,7 +223,7 @@ header {
     bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     top: auto;
     background: #000;
     border: 1px solid var(--accent);
@@ -326,23 +326,42 @@ header {
     h1 { font-size: 3.2rem; letter-spacing: 4px; }
 }
 
-/* --- AJUSTE DEL BOCADILLO EN MÓVIL --- */
-@media (max-width: 768px) {
-    .bocadillo {
-        /* 1. Letra mucho más pequeña */
-        font-size: 0.8rem; 
-        
-        /* 2. Menos relleno para que la caja sea más compacta */
-        padding: 8px 12px;
-        
-        /* 3. Bordes menos redondeados para acorde al tamaño */
+/* --- AJUSTE DEL BOCADILLO EN DISTINTAS PANTALLAS --- */
+/* 1. Tablets y Pantallas Medianas */
+@media (max-width: 850px) and (min-width: 741px) {
+   .bocadillo {
+        font-size: 0.6rem; 
+        padding: 6px 10px;
         border-radius: 8px;
     }
-
-    /* 5. Hacemos la flechita (el pico) más pequeña también */
     .bocadillo::after {
-        bottom: -7px; /* Ajuste de posición */
-        border-width: 7px 7px 0; /* Triángulo más pequeño (antes era 8px) */
+        bottom: -6px;
+        border-width: 6px 6px 0;
+    }
+}
+
+@media (max-width: 740px) and (min-width: 601px) {
+    .bocadillo {
+        font-size: 0.5rem; 
+        padding: 5px 9px;
+        border-radius: 8px;
+    }
+    .bocadillo::after {
+        bottom: -5px;
+        border-width: 5px 5px 0;
+    }
+}
+
+/* 2. Móvil Horizontal / Tablets pequeñas */
+@media (max-width: 600px) {
+    .bocadillo {
+        font-size: 0.4rem; 
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+    .bocadillo::after {
+        bottom: -4px;
+        border-width: 4px 4px 0;
     }
 }
 
