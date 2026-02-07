@@ -397,6 +397,33 @@ const observer = new IntersectionObserver((entries) => {
 // Observamos cada sección del documento para aplicar la animación cuando entren en el visor
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 
+/* --- LÓGICA DEL AVATAR DINÁMICO --- */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Seleccionar el elemento de la imagen del avatar
+    const imagenElemento = document.getElementById('avatar-dinamico');
+    
+    // 2. Definir las rutas de las imágenes para el avatar dinámico
+    const misImagenes = [
+        "images/pixelssylley1.png",
+        "images/pixelssylley2.png" 
+    ];
+    
+    let indiceActual = 0;
+    const tiempoCambio = 300;
+
+    // Solo ejecutar si la imagen existe en el HTML
+    if (imagenElemento) {
+        setInterval(() => {
+            // Avanzar al siguiente índice
+            indiceActual = (indiceActual + 1) % misImagenes.length;
+            
+            // Cambiar la fuente de la imagen
+            imagenElemento.src = misImagenes[indiceActual];
+            
+        }, tiempoCambio);
+    }
+});
+
 /* --- LÓGICA DE LOS ENLACES DE EMAIL --- */
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Configuración
