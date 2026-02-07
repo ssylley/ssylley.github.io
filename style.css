@@ -223,7 +223,7 @@ header {
     bottom: 90%; 
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     background: #000;
     border: 1px solid var(--accent);
     padding: 10px 15px;
@@ -249,21 +249,14 @@ header {
     /* Tamaño y color del pico */
     width: 10px;
     height: 10px;
-    background: #000;
     
     /* Bordes solo abajo y derecha para continuar la línea neón */
+    background: var(--card-bg);
     border-bottom: 1px solid var(--accent);
     border-right: 1px solid var(--accent);
-}
 
-/* El borde del pico */
-.bocadillo::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-style: solid;
-    border-color: var(--card-bg) transparent transparent transparent;
+    /* Lo mandamos al fondo para que no tape el texto si sube mucho */
+    z-index: -1;
 }
 
 /* Animación de aparición solo cuando se muestra el bocadillo */
@@ -333,9 +326,10 @@ header {
         bottom: 85%; 
         margin-bottom: 2px;
     }
-    .bocadillo::after {
-        bottom: -4px;
-        border-width: 5px 5px 0;
+    .bocadillo::before {
+        width: 8px;
+        height: 8px;
+        bottom: -5px;
     }
 }
 
@@ -347,9 +341,10 @@ header {
         bottom: 85%; 
         margin-bottom: 2;
     }
-    .bocadillo::after {
-        bottom: -3px;
-        border-width: 4px 4px 0;
+    .bocadillo::before {
+        width: 7px;
+        height: 7px;
+        bottom: -4px;
     }
 }
 
@@ -360,11 +355,12 @@ header {
         padding: 4px 8px;
         border-radius: 6px;
         bottom: 80%; 
-        margin-bottom: 0;
+        margin-bottom: 1;
     }
-    .bocadillo::after {
+    .bocadillo::before {
+        width: 6px;
+        height: 6px;
         bottom: -3px;
-        border-width: 4px 4px 0;
     }
 }
 
