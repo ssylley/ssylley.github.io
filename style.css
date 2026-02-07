@@ -1094,21 +1094,6 @@ h2::after {
     margin-bottom: 30px;
 }
 
-/* Cada detalle de contacto con su icono, texto y separación */
-.detail-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-/* El icono de cada detalle de contacto */
-.detail-item i {
-    color: var(--accent);
-    font-size: 1.4rem;
-}
-
 /* El contenedor de las tarjetas de contacto, con un gap entre ellas */
 .contact-grid {
     display: grid;
@@ -1138,9 +1123,50 @@ h2::after {
 /* Efecto de brillo y elevación al pasar el ratón */
 .contact-card:hover {
     background: rgba(177, 0, 232, 0.08); 
-    border-color: var(--accent); /* Se ilumina el borde */
-    box-shadow: 0 0 20px rgba(177, 0, 232, 0.15); /* Resplandor exterior */
-    transform: translateY(-5px) scale(1.01); /* Se levanta un poco */
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(177, 0, 232, 0.15);
+    transform: translateY(-5px) scale(1.01);
+}
+
+/* Contenedor con el muñeco a la izquierda y las tarjetas a la derecha */
+.contact-wrapper-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+/* El avatar del muñeco, con un efecto de pixelado y un brillo lila detrás */
+.pixel-avatar {
+    width: 250px;
+    height: auto;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 15px var(--accent));
+    animation: saltito 2s ease-in-out infinite;
+}
+
+/* Animación de saltito para el avatar */
+@keyframes saltito {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Ajuste para móvil */
+@media (max-width: 768px) {
+    .contact-wrapper-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    .pixel-avatar {
+        width: 170px;
+        margin-top: 10px;
+        margin-bottom: -4px;
+    }
 }
 
 /* Caja del Icono */
@@ -1207,14 +1233,6 @@ h2::after {
     color: var(--accent);
     transform: translateX(5px);
     text-shadow: 0 0 8px var(--accent);
-}
-
-/* Ajuste para móvil */
-@media (max-width: 768px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
 }
 
 /* --- FOOTER E ICONOS SOCIALES --- */
