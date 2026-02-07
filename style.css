@@ -223,7 +223,7 @@ header {
     bottom: 90%; 
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     background: #000;
     border: 1px solid var(--accent);
     padding: 10px 15px;
@@ -344,8 +344,8 @@ header {
         font-size: 0.5rem; 
         padding: 4px 8px;
         border-radius: 6px;
-        bottom: 80%; 
-        margin-bottom: 1;
+        bottom: 85%; 
+        margin-bottom: 2;
     }
     .bocadillo::after {
         bottom: -3px;
@@ -356,15 +356,15 @@ header {
 /* 2. Móvil Horizontal / Tablets pequeñas */
 @media (max-width: 600px) {
     .bocadillo {
-        font-size: 0.4rem; 
+        font-size: 0.5rem; 
         padding: 4px 8px;
         border-radius: 6px;
-        bottom: 75%; 
+        bottom: 80%; 
         margin-bottom: 0;
     }
     .bocadillo::after {
-        bottom: -2px;
-        border-width: 3px 3px 0;
+        bottom: -3px;
+        border-width: 4px 4px 0;
     }
 }
 
