@@ -329,7 +329,7 @@ header {
     .bocadillo::before {
         width: 8px;
         height: 8px;
-        bottom: -5px;
+        bottom: -4px;
     }
 }
 
@@ -339,12 +339,12 @@ header {
         padding: 6px 8px;
         border-radius: 6px;
         bottom: 85%; 
-        margin-bottom: 2;
+        margin-bottom: 2px;
     }
     .bocadillo::before {
         width: 7px;
         height: 7px;
-        bottom: -4px;
+        bottom: -3.5px;
     }
 }
 
@@ -355,7 +355,7 @@ header {
         padding: 6px 8px;
         border-radius: 6px;
         bottom: 80%; 
-        margin-bottom: 1;
+        margin-bottom: 1px;
     }
     .bocadillo::before {
         width: 6px;
@@ -364,6 +364,7 @@ header {
     }
 }
 
+/* --- ESTILOS PARA EL TITULO DEL HEADER --- */
 /* Tipografía del título */
 h1 {
     font-family: 'Cinzel', serif;
