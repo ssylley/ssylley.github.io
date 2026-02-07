@@ -751,6 +751,19 @@ h2::after {
     gap: 25px; 
 }
 
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 400px) {
+    .grid {
+        grid-template-columns: 1fr; /* Que ocupe todo el ancho disponible sin mínimo fijo */
+    }
+    .idiomas-grid {
+        justify-content: center; /* Centrar las tarjetas de idiomas */
+    }
+    .lang-card {
+        min-width: 100%; /* Que la tarjeta se adapte al ancho del móvil */
+    }
+}
+
 /* Tarjetas con efecto de brillo al pasar el ratón */
 .card {
     background: radial-gradient(circle at left, #1a1a1a 0%, #000000 85%);
@@ -1097,8 +1110,7 @@ h2::after {
 /* El contenedor de las tarjetas de contacto, con un gap entre ellas */
 .contact-grid {
     display: grid;
-    /* Esto hace que si hay espacio, se pongan en columnas, si no, una debajo de otra */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    grid-template-columns: 1fr; 
     gap: 20px;
     margin-top: 30px;
 }
@@ -1107,7 +1119,7 @@ h2::after {
 .contact-card {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 0;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(177, 0, 232, 0.2);
@@ -1117,6 +1129,7 @@ h2::after {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    padding: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
@@ -1162,6 +1175,13 @@ h2::after {
     .contact-wrapper-flex {
         flex-direction: column;
         text-align: center;
+    }
+    .contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .contact-card {
+        padding: 25px;
     }
     .pixel-avatar {
         width: 170px;
@@ -1213,12 +1233,25 @@ h2::after {
 /* Textos dentro de la info */
 .info-box p {
     color: #aaa;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-family: 'Fira Code', monospace;
     margin: 0;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-all;
+    line-height: 1.4;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* Ajuste en pantallas grandes */
+@media (min-width: 768px) {
+    .info-box p {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        word-break: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 /* La flechita de cada tarjeta */
