@@ -220,10 +220,10 @@ header {
 /* --- El bocadillo del gato --- */
 .bocadillo {
     position: absolute;
-    bottom: 100%; 
+    bottom: 90%; 
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 3px;
+    margin-bottom: 5px;
     background: #000;
     border: 1px solid var(--accent);
     padding: 10px 15px;
@@ -260,10 +260,8 @@ header {
 .bocadillo::after {
     content: '';
     position: absolute;
-    bottom: -10px; 
     left: 50%;
     transform: translateX(-50%);
-    border-width: 5px;
     border-style: solid;
     border-color: var(--card-bg) transparent transparent transparent;
 }
@@ -332,13 +330,11 @@ header {
         font-size: 0.6rem; 
         padding: 6px 10px;
         border-radius: 8px;
-    }
-    .bocadillo::before {
-        width: 7px;
-        height: 7px;
+        bottom: 85%; 
+        margin-bottom: 2px;
     }
     .bocadillo::after {
-        bottom: -5px;
+        bottom: -4px;
         border-width: 5px 5px 0;
     }
 }
@@ -346,15 +342,13 @@ header {
 @media (max-width: 740px) and (min-width: 601px) {
     .bocadillo {
         font-size: 0.5rem; 
-        padding: 5px 9px;
+        padding: 4px 8px;
         border-radius: 6px;
-    }
-    .bocadillo::before {
-        width: 6px;
-        height: 6px;
+        bottom: 80%; 
+        margin-bottom: 0;
     }
     .bocadillo::after {
-        bottom: -4px;
+        bottom: -3px;
         border-width: 4px 4px 0;
     }
 }
