@@ -37,6 +37,13 @@ body {
     overflow-x: hidden;
 }
 
+/* Evitamos que cualquier elemento pueda causar scroll horizontal */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 /* Fondo de estrellas animado */
 canvas { 
     position: fixed; 
@@ -1140,6 +1147,7 @@ h2::after {
 /* El avatar del muñeco, con un efecto de pixelado y un brillo lila detrás */
 .pixel-avatar {
     margin-top: 27.5px;
+    max-width: 100%;
     width: 250px;
     height: auto;
     image-rendering: pixelated;
