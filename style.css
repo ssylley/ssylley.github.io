@@ -251,7 +251,7 @@ header {
     height: 10px;
     
     /* Bordes solo abajo y derecha para continuar la línea neón */
-    background: var(--card-bg);
+    background: #000;
     border-bottom: 1px solid var(--accent);
     border-right: 1px solid var(--accent);
 
@@ -360,7 +360,7 @@ header {
     .bocadillo::before {
         width: 6px;
         height: 6px;
-        bottom: -3px;
+        bottom: -3.5px;
     }
 }
 
