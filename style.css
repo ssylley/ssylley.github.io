@@ -1,757 +1,757 @@
 /* --- VARIABLES DE COLOR Y CONFIGURACIÓN BASE --- */
 :root {
-    /* Colores principales */
-    --bg: #050505;
-    --card-bg: #0d0d0d;
-    --accent: #b100e8;
-    --text: #e0e0e0;
-    --dim-text: #666;
-    --shadow: 0 0 15px rgba(177, 0, 232, 0.3);
+    /* Colores principales */
+    --bg: #050505;
+    --card-bg: #0d0d0d;
+    --accent: #b100e8;
+    --text: #e0e0e0;
+    --dim-text: #666;
+    --shadow: 0 0 15px rgba(177, 0, 232, 0.3);
 
-    /* Niveles de conocimiento */
-    --nivel-alto: #00ff88;
-    --nivel-medio: #ffbb00;
-    --nivel-basico: #00d4ff;
+    /* Niveles de conocimiento */
+    --nivel-alto: #00ff88;
+    --nivel-medio: #ffbb00;
+    --nivel-basico: #00d4ff;
 
-    /* Colores neón para las habilidades */
-    --neon-red: #ff3b3b;
-    --neon-blue: #38c0ff;
-    --neon-oceanblue: #0051ff;
-    --neon-green: #91ff38;
-    --neon-yellow: #fff425;
-    --neon-orange: #ff711f;
+    /* Colores neón para las habilidades */
+    --neon-red: #ff3b3b;
+    --neon-blue: #38c0ff;
+    --neon-oceanblue: #0051ff;
+    --neon-green: #91ff38;
+    --neon-yellow: #fff425;
+    --neon-orange: #ff711f;
 }
 
 /* --- RESETEO DE MÁRGENES Y PADDING --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
 }
 
 /* --- ESTILOS BASE DEL BODY--- */
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
 /* Fondo de estrellas animado */
-canvas { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    z-index: -1; 
+canvas { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: -1; 
 }
 
 /* Contenedor general para centrar el contenido y limitar su ancho */
-.container { 
-    max-width: 1000px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+.container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
 }
 
 /* --- PETALOS DECORATIVOS --- */
 .petalo {
-    position: fixed;
-    background: linear-gradient(135deg, var(--accent), #4a0061);
-    opacity: 0.6;
-    border-radius: 100% 0 90% 10%;
-    filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
-    z-index: 1;
-    pointer-events: none;
+    position: fixed;
+    background: linear-gradient(135deg, var(--accent), #4a0061);
+    opacity: 0.6;
+    border-radius: 100% 0 90% 10%;
+    filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* --- TOGGLE PARA LOS IDIOMAS --- */
 .language-switch {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
 /* Ocultamos el checkbox por defecto */
 #toggle-lang {
-    display: none;
+    display: none;
 }
 
 /* El contenedor del switch */
 .switch-label {
-    display: flex;
-    width: 80px;
-    height: 35px;
-    background: #000;
-    border: 1px solid var(--accent); /* Borde lila */
-    border-radius: 5px;
-    position: relative;
-    cursor: pointer;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    box-shadow: 0 0 10px rgba(177, 0, 232, 0.2);
-    transition: 0.3s;
+    display: flex;
+    width: 80px;
+    height: 35px;
+    background: #000;
+    border: 1px solid var(--accent); /* Borde lila */
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-shadow: 0 0 10px rgba(177, 0, 232, 0.2);
+    transition: 0.3s;
 }
 
 /* Texto del switch */
 .lang-text {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #666;
-    z-index: 2;
-    transition: 0.3s;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #666;
+    z-index: 2;
+    transition: 0.3s;
 }
 
 /* El bloque del switch que se va desplazando */
 .slider {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 36px;
-    height: 29px;
-    background: var(--accent);
-    border-radius: 3px;
-    transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Efecto rebote */
-    z-index: 1;
-    box-shadow: 0 0 10px var(--accent);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 36px;
+    height: 29px;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Efecto rebote */
+    z-index: 1;
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* Lógica del switch */
 /* Si está marcado (EN), mueve el bloque a la derecha */
 #toggle-lang:checked + .switch-label .slider {
-    transform: translateX(38px);
+    transform: translateX(38px);
 }
 
 /* Si NO está marcado EN -> ES es blanco brillante */
 #toggle-lang:not(:checked) + .switch-label .lang-text:nth-of-type(1) {
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
 /* Si ESTÁ marcado EN -> EN es blanco brillante */
 #toggle-lang:checked + .switch-label .lang-text:nth-of-type(2) {
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
 /* EN apagado cuando estamos en ES */
 #toggle-lang:not(:checked) + .switch-label .lang-text:nth-of-type(2),
 /* ES apagado cuando estamos en EN */
 #toggle-lang:checked + .switch-label .lang-text:nth-of-type(1) {
-    color: #555;
-    text-shadow: none;
+    color: #555;
+    text-shadow: none;
 }
 
 /* --- SCROLLBAR PERSONALIZADA --- */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 10px;
 }
 
 /* El carril (fondo) de la scrollbar */
 ::-webkit-scrollbar-track {
-    background: #050505; 
+    background: #050505; 
 }
 
 /* La barra que se mueve (thumb) de la scrollbar */
 ::-webkit-scrollbar-thumb {
-    background: #333; 
-    border-radius: 5px;
-    border: 2px solid #050505;
+    background: #333; 
+    border-radius: 5px;
+    border: 2px solid #050505;
 }
 
 /* Hover del thumb de la scrollbar */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* --- ESTILOS BASE DEL HEADER --- */
 header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /* Contenedor del gato sobre el nombre */
 .cat-container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-left: 120px;
-    margin-bottom: -50px; 
-    z-index: 100;
-    line-height: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 120px;
+    margin-bottom: -50px; 
+    z-index: 100;
+    line-height: 0;
 }
 
 /* El gato que duerme y despierta */
 .gato-sleeping {
-    width: 12vw;
-    height: 12vw; 
-    max-width: 110px;
-    min-width: 60px;
-    background-image: url('images/gatoSleeping1.png'); 
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center bottom;
-    image-rendering: pixelated;
-    cursor: pointer;
-    filter: drop-shadow(0 0 5px var(--accent));
-    animation: respirar 4s ease-in-out infinite;
-    transition: none;
+    width: 12vw;
+    height: 12vw; 
+    max-width: 110px;
+    min-width: 60px;
+    background-image: url('images/gatoSleeping1.png'); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+    image-rendering: pixelated;
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px var(--accent));
+    animation: respirar 4s ease-in-out infinite;
+    transition: none;
 }
 
 /* Quitamos la animación de respirar cuando se despierta */
 .gato-sleeping.despierto {
-    animation: none;
-    transform: scale(1.05);
+    animation: none;
+    transform: scale(1.05);
 }
 
 /* Animación de respiración del gato */
 @keyframes respirar {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 /* --- El bocadillo del gato --- */
 .bocadillo {
-    position: absolute;
-    bottom: 90%; 
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 2px;
-    background: #000;
-    border: 1px solid var(--accent);
-    padding: 10px 15px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-family: 'Fira Code', monospace;
-    color: var(--accent);
-    display: none;
-    white-space: nowrap;
-    z-index: 2000;
-    box-shadow: 0 0 10px rgba(177, 0, 232, 0.3);
+    position: absolute;
+    bottom: 90%; 
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2px;
+    background: #000;
+    border: 1px solid var(--accent);
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-family: 'Fira Code', monospace;
+    color: var(--accent);
+    display: none;
+    white-space: nowrap;
+    z-index: 2000;
+    box-shadow: 0 0 10px rgba(177, 0, 232, 0.3);
 }
 
 /* El pico del bocadillo */
 .bocadillo::before {
-    /* El triángulo del pico */
-    content: '';
-    position: absolute;
-    bottom: -6px; 
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    
-    /* Tamaño y color del pico */
-    width: 10px;
-    height: 10px;
-    
-    /* Bordes solo abajo y derecha para continuar la línea neón */
-    background: #000;
-    border-bottom: 1px solid var(--accent);
-    border-right: 1px solid var(--accent);
+    /* El triángulo del pico */
+    content: '';
+    position: absolute;
+    bottom: -6px; 
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    
+    /* Tamaño y color del pico */
+    width: 10px;
+    height: 10px;
+    
+    /* Bordes solo abajo y derecha para continuar la línea neón */
+    background: #000;
+    border-bottom: 1px solid var(--accent);
+    border-right: 1px solid var(--accent);
 
-    /* Lo mandamos al fondo para que no tape el texto si sube mucho */
-    z-index: -1;
+    /* Lo mandamos al fondo para que no tape el texto si sube mucho */
+    z-index: -1;
 }
 
 /* Animación de aparición solo cuando se muestra el bocadillo */
 .bocadillo[style*="display: block"] {
-    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Animación de aparición del bocadillo */
 @keyframes popIn {
-    from { opacity: 0; transform: translate(-50%, 10px) scale(0.8); }
-    to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+    from { opacity: 0; transform: translate(-50%, 10px) scale(0.8); }
+    to { opacity: 1; transform: translate(-50%, 0) scale(1); }
 }
 
 /* --- AJUSTE DEL GATO DEL HEADER EN DISTINTAS PANTALLAS --- */
 /* 1. Pantallas Grandes / Laptops (Desktop) */
 @media (min-width: 1025px) {
-    .cat-container {
-        padding-left: 296px;
-        margin-bottom: -51px; 
-    }
-    .gato-sleeping { width: 100px; height: 100px; }
+    .cat-container {
+        padding-left: 296px;
+        margin-bottom: -51px; 
+    }
+    .gato-sleeping { width: 100px; height: 100px; }
 }
 
 /* 2. Tablets y Pantallas Medianas */
 @media (max-width: 1024px) and (min-width: 851px) {
-    .cat-container {
-        padding-left: 289px;
-        margin-bottom: -50px; 
-    }
-    .gato-sleeping { width: 100px; height: 100px; }
+    .cat-container {
+        padding-left: 289px;
+        margin-bottom: -50px; 
+    }
+    .gato-sleeping { width: 100px; height: 100px; }
 }
 
 /* 2. Tablets y Pantallas Medianas */
 @media (max-width: 850px) and (min-width: 741px) {
-    .cat-container {
-        padding-left: 250px;
-        margin-bottom: -45px; 
-    }
-    .gato-sleeping { width: 87px; height: 87px; }
+    .cat-container {
+        padding-left: 250px;
+        margin-bottom: -45px; 
+    }
+    .gato-sleeping { width: 87px; height: 87px; }
 }
 
 @media (max-width: 740px) and (min-width: 601px) {
-    .cat-container {
-        padding-left: 232px;
-        margin-bottom: -38px; 
-    }
-    .gato-sleeping { width: 75px; height: 75px; }
+    .cat-container {
+        padding-left: 232px;
+        margin-bottom: -38px; 
+    }
+    .gato-sleeping { width: 75px; height: 75px; }
 }
 
 /* 3. Móvil Horizontal / Tablets pequeñas */
 @media (max-width: 600px) {
-    .cat-container {
-        padding-left: 160px; 
-        margin-bottom: -30px;
-    }
-    .gato-sleeping { width: 65px; height: 65px; }
-    h1 { font-size: 3.2rem; letter-spacing: 4px; }
+    .cat-container {
+        padding-left: 160px; 
+        margin-bottom: -30px;
+    }
+    .gato-sleeping { width: 65px; height: 65px; }
+    h1 { font-size: 3.2rem; letter-spacing: 4px; }
 }
 
 /* --- AJUSTE DEL BOCADILLO EN DISTINTAS PANTALLAS --- */
 /* 1. Tablets y Pantallas Medianas */
 @media (max-width: 850px) and (min-width: 741px) {
-   .bocadillo {
-        font-size: 0.6rem; 
-        padding: 8px 10px;
-        border-radius: 8px;
-        bottom: 85%; 
-        margin-bottom: 2px;
-    }
-    .bocadillo::before {
-        width: 8px;
-        height: 8px;
-        bottom: -4px;
-    }
+   .bocadillo {
+        font-size: 0.6rem; 
+        padding: 8px 10px;
+        border-radius: 8px;
+        bottom: 85%; 
+        margin-bottom: 2px;
+    }
+    .bocadillo::before {
+        width: 8px;
+        height: 8px;
+        bottom: -4px;
+    }
 }
 
 @media (max-width: 740px) and (min-width: 601px) {
-    .bocadillo {
-        font-size: 0.5rem; 
-        padding: 6px 8px;
-        border-radius: 6px;
-        bottom: 85%; 
-        margin-bottom: 2px;
-    }
-    .bocadillo::before {
-        width: 7px;
-        height: 7px;
-        bottom: -3.5px;
-    }
+    .bocadillo {
+        font-size: 0.5rem; 
+        padding: 6px 8px;
+        border-radius: 6px;
+        bottom: 85%; 
+        margin-bottom: 2px;
+    }
+    .bocadillo::before {
+        width: 7px;
+        height: 7px;
+        bottom: -3.5px;
+    }
 }
 
 /* 2. Móvil Horizontal / Tablets pequeñas */
 @media (max-width: 600px) {
-    .bocadillo {
-        font-size: 0.5rem; 
-        padding: 6px 8px;
-        border-radius: 6px;
-        bottom: 80%; 
-        margin-bottom: 1px;
-    }
-    .bocadillo::before {
-        width: 6px;
-        height: 6px;
-        bottom: -3.5px;
-    }
+    .bocadillo {
+        font-size: 0.5rem; 
+        padding: 6px 8px;
+        border-radius: 6px;
+        bottom: 80%; 
+        margin-bottom: 1px;
+    }
+    .bocadillo::before {
+        width: 6px;
+        height: 6px;
+        bottom: -3.5px;
+    }
 }
 
 /* --- ESTILOS PARA EL TITULO DEL HEADER --- */
 /* Tipografía del título */
 h1 {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(3rem, 10vw, 6rem);
-    color: var(--accent);
-    text-shadow: var(--shadow);
-    letter-spacing: 8px;
-    animation: pulse 4s infinite alternate;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: var(--accent);
+    text-shadow: var(--shadow);
+    letter-spacing: 8px;
+    animation: pulse 4s infinite alternate;
 }
 
 /* Tipografía del subtítulo tipo máquina de escribir */
 .typewriter {
-    font-family: 'Fira Code', monospace;
-    color: var(--dim-text);
-    font-size: 1.1rem;
-    margin-top: 10px;
+    font-family: 'Fira Code', monospace;
+    color: var(--dim-text);
+    font-size: 1.1rem;
+    margin-top: 10px;
 }
 
 /* Animación de pulso para el título */
 @keyframes pulse {
-    from { opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent)); }
-    to { opacity: 1; filter: drop-shadow(0 0 20px var(--accent)); }
+    from { opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent)); }
+    to { opacity: 1; filter: drop-shadow(0 0 20px var(--accent)); }
 }
 
 /* --- ESTILO BASE DE LAS FLECHAS DE SCROLL DEL HEADER --- */
 .scroll-indicator {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    margin: 50px auto 0 auto;
-    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 50px auto 0 auto;
+    cursor: pointer;
 }
 
 /* Las dos flechas que forman la indicación de scroll */
 .scroll-indicator span {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-bottom: 2px solid var(--accent);
-    border-right: 2px solid var(--accent);
-    transform: rotate(45deg);
-    margin: -10px auto;
-    animation: scroll-animate 2s infinite;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    transform: rotate(45deg);
+    margin: -10px auto;
+    animation: scroll-animate 2s infinite;
 }
 
 /* La segunda flecha tiene un retraso para crear un efecto de movimiento continuo */
 .scroll-indicator span:nth-child(2) {
-    animation-delay: -0.2s;
+    animation-delay: -0.2s;
 }
 
 /* Animación de las flechas para indicar que se puede hacer scroll */
 @keyframes scroll-animate {
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) translate(-20px, -20px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translate(20px, 20px);
-    }
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
 }
 
 /* --- ESTILO BASE DE LAS SECCIONES --- */
 section {
-    opacity: 0;
-    padding: 50px 0; 
-    border-bottom: 1px solid #1a1a1a; 
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    opacity: 0;
+    padding: 50px 0; 
+    border-bottom: 1px solid #1a1a1a; 
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
 
 /* Cuando la sección es visible, se activa la animación de aparición */
 section.visible {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Estilo de los títulos de sección con una línea decorativa a la derecha */
 h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 /* La línea decorativa a la derecha del título */
-h2::after { 
-    content: ""; 
-    flex: 1; 
-    height: 1px; 
-    background: linear-gradient(to right, var(--accent), transparent); 
+h2::after { 
+    content: ""; 
+    flex: 1; 
+    height: 1px; 
+    background: linear-gradient(to right, var(--accent), transparent); 
 }
 
 /* --- SECCION SOBRE MI --- */
 #sobre-mi div{
-    /* La línea continua */
-    border-left: 2px solid var(--accent);
-    /* Espacio entre la línea y el texto */
-    padding-left: 25px;
+    /* La línea continua */
+    border-left: 2px solid var(--accent);
+    /* Espacio entre la línea y el texto */
+    padding-left: 25px;
 }
 
 /* Estilo de los párrafos dentro de Sobre Mí */
 #sobre-mi p {
-    font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-    color: #bbb;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #bbb;
 }
 
 /* Resaltado de palabras clave dentro de los párrafos */
 #sobre-mi p strong {
-    color: var(--accent);
-    font-weight: 700;
-    -webkit-text-fill-color: var(--accent);
-    text-shadow: 0 0 10px rgba(177, 0, 232, 0.4);
+    color: var(--accent);
+    font-weight: 700;
+    -webkit-text-fill-color: var(--accent);
+    text-shadow: 0 0 10px rgba(177, 0, 232, 0.4);
 }
 
 /* Quitar el margen al último párrafo del contenedor */
 #sobre-mi p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* --- SECCION PROYECTOS --- */
 .project-card {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 /* El contenedor de la imagen del proyecto con borde y efecto de recorte */
 .project-image {
-    width: 100%;
-    height: 180px;
-    background: #222;
-    position: relative;
-    overflow: hidden;
-    border-top-left-radius: 17px;
-    border-top-right-radius: 17px;
-    border-bottom: 1px solid var(--accent);
+    width: 100%;
+    height: 180px;
+    background: #222;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
+    border-bottom: 1px solid var(--accent);
 }
 
 /* La imagen del proyecto, que se recorta dentro del contenedor */
 .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
 }
 
 /* La imagen se oscurece y aparecen los botones */
 .project-card:hover .project-image img {
-    transform: scale(1.1);
-    opacity: 0.6;
+    transform: scale(1.1);
+    opacity: 0.6;
 }
 
 /* El overlay con los botones, inicialmente oculto */
 .overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: 0.3s;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s;
 }
 
 /* Al hacer hover en la tarjeta, el overlay se muestra */
 .project-card:hover .overlay {
-    opacity: 1;
+    opacity: 1;
 }
 
 /* Estilo de los botones dentro del overlay */
 .project-content {
-    padding: 30px 30px 8px 1px;
+    padding: 30px 30px 8px 1px;
 }
 
 /* Tipografía del título del proyecto */
 .project-content p {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.80rem;
-    color: #aaa;
-    margin-bottom: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.80rem;
+    color: #aaa;
+    margin-bottom: 15px;
 }
 
 /* Caja de tags de la tecnología usada */
 .tech-stack {
-    margin-top: 15px;
-    margin-bottom: -5px; 
+    margin-top: 15px;
+    margin-bottom: -5px; 
 }
 
 /* Reducimos el margen individual de cada tag */
 .project-content .tag {
-    margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 /* El contenedor de la lista de características del proyecto */
 .feature-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    gap: 8px;
 }
 
 /* Estilo de la lista de características del proyecto */
 .feature-list li {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    color: #ccc;
-    display: flex;
-    align-items: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #ccc;
+    display: flex;
+    align-items: center;
 }
 
 /* El puntito decorativo de la lista */
 .feature-list li::before {
-    content: '>';
-    color: var(--accent);
-    margin-left: 20px;
-    margin-right: 8px;
-    font-weight: bold;
-    font-size: 1rem;
+    content: '>';
+    color: var(--accent);
+    margin-left: 20px;
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 /* Ajuste para móvil: que vuelva a 1 sola columna si la pantalla es pequeña */
 @media (max-width: 500px) {
-    .feature-list ul {
-        grid-template-columns: 1fr;
-    }
+    .feature-list ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Botones neón pequeños */
 .btn-neon {
-    text-decoration: none;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.8rem;
-    transition: 0.3s;
-    background: rgba(0,0,0,0.8);
+    text-decoration: none;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    transition: 0.3s;
+    background: rgba(0,0,0,0.8);
 }
 
 /* Hover de los botones neón */
 .btn-neon:hover {
-    background: var(--accent);
-    color: #000;
-    box-shadow: 0 0 10px var(--accent);
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* --- SECCION TRAYECTORIA --- */
 .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 0;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
 /* Separación entre items */
 .timeline-item {
-    position: relative;
-    margin-bottom: 70px;
-    padding-left: 50px;
+    position: relative;
+    margin-bottom: 70px;
+    padding-left: 50px;
 }
 
 /* Línea vertical que conecta todos los items */
 .timeline::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 20px; /* Posición de la línea */
-    width: 2px;
-    background: rgba(255, 255, 255, 0.1);
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px; /* Posición de la línea */
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Quitar el margen del último item */
 .timeline-item:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* Punto brillante de cada item*/
 .timeline-dot {
-    position: absolute;
-    left: 11px;
-    top: 5px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #000;
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    z-index: 2;
+    position: absolute;
+    left: 11px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    z-index: 2;
 }
 
 /* Contenido de cada item */
 .timeline-content {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 3px solid var(--accent);
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    transition: 0.3s;
 }
 
 /* El fondo se ilumina y el contenido se desplaza ligeramente a la derecha */
 .timeline-content:hover {
-    background: rgba(255, 255, 255, 0.06);
-    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(5px);
 }
 
 /* Tipografía de la fecha */
 .timeline-date {
-    font-family: 'Fira Code', monospace;
-    font-size: 1.1rem;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 7px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 7px;
 }
 
 /* Tipografía del título */
 .timeline-content h3 {
-    font-family: 'Fira Code', monospace;
-    margin: 0;
-    color: #fff;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    font-family: 'Fira Code', monospace;
+    margin: 0;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
 }
 
 /* Tipografía del centro / empresa */
 .timeline-content h4 {
-    font-family: 'Fira Code', monospace;
-    margin: 5px 0 10px 0;
-    color: #aaa;
-    font-weight: 400;
-    font-size: 0.87rem;
+    font-family: 'Fira Code', monospace;
+    margin: 5px 0 10px 0;
+    color: #aaa;
+    font-weight: 400;
+    font-size: 0.87rem;
 }
 
 /* Tipografía del párrafo descriptivo de cada item */
 .timeline-content p {
-    font-family: 'Fira Code', monospace;
-    color: #888;
-    font-size: 0.82rem;
-    line-height: 1.5;
+    font-family: 'Fira Code', monospace;
+    color: #888;
+    font-size: 0.82rem;
+    line-height: 1.5;
 }
 
 /* --- SECCION CONOCIMIENTOS --- */
 .leyenda {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 40px;
-    font-size: 0.8rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /* Cada item de la leyenda con su punto decorativo */
-.item-leyenda { 
-    font-family: 'Fira Code', monospace;
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
+.item-leyenda { 
+    font-family: 'Fira Code', monospace;
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
 }
 
 /* El puntito decorativo de cada item de la leyenda */
-.punto { 
-    width: 10px; 
-    height: 10px; 
-    border-radius: 50%; 
+.punto { 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%; 
 }
 
 /* El contenedor de las tarjetas de conocimientos, con un gap entre ellas */
-.grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 25px; 
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px; 
 }
 
-/* Ajuste para pantallas pequeñas */
+/* Ajuste para pantallas muy pequeñas */
 @media (max-width: 400px) {
     .grid {
         grid-template-columns: 1fr;
@@ -766,515 +766,514 @@ h2::after { 
 
 /* Tarjetas con efecto de brillo al pasar el ratón */
 .card {
-    background: radial-gradient(circle at left, #1a1a1a 0%, #000000 85%);
-    border: 1px solid rgba(177, 0, 232, 0.3);
-    border-radius: 24px;
-    padding: 30px 25px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    transform: translateZ(0); 
-    overflow: hidden;
-    backdrop-filter: blur(5px); 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background: radial-gradient(circle at left, #1a1a1a 0%, #000000 85%);
+    border: 1px solid rgba(177, 0, 232, 0.3);
+    border-radius: 24px;
+    padding: 30px 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    transform: translateZ(0); 
+    overflow: hidden;
+    backdrop-filter: blur(5px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Brillo superior del ícono */
 .card::before {
-    content: attr(data-icon);
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    bottom: -10px;
-    right: 10px;
-    font-size: 5rem;
-    color: rgba(255, 255, 255, 0.06);
-    pointer-events: none;
-    transition: 0.3s;
-    position: absolute;
-    line-height: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    z-index: 0;
+    content: attr(data-icon);
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    bottom: -10px;
+    right: 10px;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+    transition: 0.3s;
+    position: absolute;
+    line-height: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 0;
 }
 
 /* Efecto de brillo y elevación al pasar el ratón */
 .card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--accent);
-    box-shadow: 
-        0 10px 40px -10px rgba(177, 0, 232, 0.5),
-        inset 0 0 20px rgba(177, 0, 232, 0.1);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 
+        0 10px 40px -10px rgba(177, 0, 232, 0.5),
+        inset 0 0 20px rgba(177, 0, 232, 0.1);
 }
 
 /* El brillo superior se intensifica y rota ligeramente al pasar el ratón */
 .card:hover::before {
-    color: rgba(177, 0, 232, 0.1);
-    transform: rotate(-10deg) scale(1.1);
+    color: rgba(177, 0, 232, 0.1);
+    transform: rotate(-10deg) scale(1.1);
 }
 
 /* Estilo del título dentro de la card */
 .card h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-left: none; 
-    padding-left: 0;
-    text-shadow: 0 0 10px rgba(177, 0, 232, 0.6);
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: none; 
+    padding-left: 0;
+    text-shadow: 0 0 10px rgba(177, 0, 232, 0.6);
 }
 
 /* La barra vertical "|" brillante antes del titulo */
 .card h3::before {
-    content: '';
-    display: inline-block;
-    width: 4px;
-    align-self: stretch;
-    background-color: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    border-radius: 2px;
-    flex-shrink: 0;
+    content: '';
+    display: inline-block;
+    width: 4px;
+    align-self: stretch;
+    background-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
 }
 
 /* Efecto especial para la tarjeta */
 .card.special-glow:hover {
-    border-color: #8f00b3;
-    box-shadow: 
-        0 10px 50px -10px rgba(247, 0, 255, 0.4), 
-        inset 0 0 30px rgba(255, 0, 191, 0.1);
+    border-color: #8f00b3;
+    box-shadow: 
+        0 10px 50px -10px rgba(247, 0, 255, 0.4), 
+        inset 0 0 30px rgba(255, 0, 191, 0.1);
 }
 
-/* Etiquetas de cada card */
+/* --- Etiquetas de cada card --- */
 .tag {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #a0a0a0;
-    padding: 6px 16px;
-    font-size: 0.8rem;
-    border-radius: 50px;
-    margin: 0 8px 12px 0;
-    font-family: 'Fira Code', monospace;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: I-beam;
-    box-shadow: none;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #a0a0a0;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    margin: 0 8px 12px 0;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: I-beam;
+    box-shadow: none;
 }
 
 /* Cuando pasas el ratón por un tag sin nivel, brilla en blanco */
 .tag:hover {
-    border-color: #fff;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
 /* El icono del tag se separa del texto */
 .tag i {
-    margin-right: 6px;
+    margin-right: 6px;
 }
 
 /* Estilos específicos para cada nivel de conocimiento */
 .tag.alto {
-    border-color: var(--nivel-alto);
-    color: var(--nivel-alto);
-    background: rgba(0, 255, 136, 0.05);
+    border-color: var(--nivel-alto);
+    color: var(--nivel-alto);
+    background: rgba(0, 255, 136, 0.05);
 }
 .tag.alto:hover {
-    background: var(--nivel-alto);
-    color: #000;
-    box-shadow: 0 0 15px var(--nivel-alto);
+    background: var(--nivel-alto);
+    color: #000;
+    box-shadow: 0 0 15px var(--nivel-alto);
 }
 
 /* Nivel Medio (Amarillo) */
 .tag.medio {
-    border-color: var(--nivel-medio);
-    color: var(--nivel-medio);
-    background: rgba(255, 187, 0, 0.05);
+    border-color: var(--nivel-medio);
+    color: var(--nivel-medio);
+    background: rgba(255, 187, 0, 0.05);
 }
 .tag.medio:hover {
-    background: var(--nivel-medio);
-    color: #000;
-    box-shadow: 0 0 15px var(--nivel-medio);
+    background: var(--nivel-medio);
+    color: #000;
+    box-shadow: 0 0 15px var(--nivel-medio);
 }
 
 /* Nivel Básico (Azul) */
 .tag.basico {
-    border-color: var(--nivel-basico);
-    color: var(--nivel-basico);
-    background: rgba(0, 212, 255, 0.05);
+    border-color: var(--nivel-basico);
+    color: var(--nivel-basico);
+    background: rgba(0, 212, 255, 0.05);
 }
 .tag.basico:hover {
-    background: var(--nivel-basico);
-    color: #000;
-    box-shadow: 0 0 15px var(--nivel-basico);
+    background: var(--nivel-basico);
+    color: #000;
+    box-shadow: 0 0 15px var(--nivel-basico);
 }
 
 /* --- SECCION HABILIDADES --- */
 .skills-container {
-    display: grid;
-    grid-template-columns: 100%;
-    gap: 30px;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 30px;
+    width: 100%;
 }
 
 /* Cada caja de habilidad con su margen inferior */
 .skill-box {
-    margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 /* Cada habilidad, con el nombre a la izquierda y el porcentaje a la derecha */
 .skill-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-family: 'Fira Code', monospace;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
 }
 
 /* El icono de cada habilidad, con un margen a la derecha y color blanco */
 .skill-info i {
-    margin-right: 8px;
-    color: #fff;
+    margin-right: 8px;
+    color: #fff;
 }
 
 /* La barra de progreso de cada habilidad, con fondo oscuro y borde */
 .progress-bar {
-    width: 100%;
-    height: 10px;
-    background: #1a1a1a;
-    border-radius: 10px;
-    border: 1px solid #333;
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 0 0 5px #000;
+    width: 100%;
+    height: 10px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 5px #000;
 }
 
 /* La barra de progreso interna, que se llena según el porcentaje y tiene un efecto de brillo */
 .progress {
-    height: 100%;
-    border-radius: 10px;
-    background: var(--c);
-    box-shadow: 0 0 10px var(--c);
-    position: relative;
-    animation: cargarBarra 1.5s ease-out forwards;
-    transform-origin: left;
-    transform: scaleX(0); 
+    height: 100%;
+    border-radius: 10px;
+    background: var(--c);
+    box-shadow: 0 0 10px var(--c);
+    position: relative;
+    animation: cargarBarra 1.5s ease-out forwards;
+    transform-origin: left;
+    transform: scaleX(0); 
 }
 
 /* Efecto de brillo que recorre la barra */
 .progress::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
-    transform: translateX(-100%);
-    animation: brillo 2s infinite;
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+    transform: translateX(-100%);
+    animation: brillo 2s infinite;
 }
 
 /* Animación para llenar la barra de progreso */
 @keyframes cargarBarra {
-    to { transform: scaleX(1); }
+    to { transform: scaleX(1); }
 }
 
 /* Animación del brillo que recorre la barra de progreso */
 @keyframes brillo {
-    100% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
 }
 
 /* Ajuste de las columnas en pantallas grandes */
 @media (min-width: 900px) {
-    .skills-container {
-        grid-template-columns: 1fr 1fr; 
-        gap: 40px;
-    }
+    .skills-container {
+        grid-template-columns: 1fr 1fr; 
+        gap: 40px;
+    }
 }
 
 /* --- SECCION IDIOMAS --- */
 .idiomas-grid {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 /* Estilo base de la taarjeta */
 .lang-card {
-    background: linear-gradient(145deg, #0d0d0d, #151515);
-    border: 1px solid #333;
-    border-radius: 15px;
-    padding: 15px 25px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    min-width: 250px;
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(145deg, #0d0d0d, #151515);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 250px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Efecto de brillo y elevación al pasar el ratón */
 .lang-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 5px 15px rgba(177, 0, 232, 0.2);
-    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(177, 0, 232, 0.2);
+    transform: translateY(-5px);
 }
 
 /* El círculo con el código ES/EN */
 .iso-code {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #000;
-    border: 2px solid var(--dim-text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    color: var(--dim-text);
-    font-size: 1.2rem;
-    transition: 0.3s;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #000;
+    border: 2px solid var(--dim-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    color: var(--dim-text);
+    font-size: 1.2rem;
+    transition: 0.3s;
 }
 
 /* El círculo se ilumina y el texto se vuelve más brillante */
 .lang-card:hover .iso-code {
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    text-shadow: 0 0 5px var(--accent);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    text-shadow: 0 0 5px var(--accent);
 }
 
 /* Detalles del idioma, con el nombre a la izquierda y la descripción a la derecha */
 .lang-details {
-    font-family: 'Fira Code', monospace;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Tipografía del nombre del idioma */
 .lang-details h4 {
-    margin: 0 0 8px 0;
-    color: #fff;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    margin: 0 0 8px 0;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
 }
 
 /* Tipografía de la descripción del idioma */
 .lang-details p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #aaa;
-    font-weight: 300;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 300;
 }
 
 /* Barra decorativa inferior */
 .mini-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* La barra interna que se llena según el nivel del idioma, con un efecto de brillo */
 .mini-bar div {
-    height: 100%;
-    background: var(--accent);
-    box-shadow: 0 -2px 1px var(--accent);
-    border-radius: 0 5px 0 0;
+    height: 100%;
+    background: var(--accent);
+    box-shadow: 0 -2px 1px var(--accent);
+    border-radius: 0 5px 0 0;
 }
 
 /* --- SECCIÓN CONTACTO --- */
 #contacto {
-    margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 /* Estilos para la info de la izquierda de la sección contacto */
 .contact-info p {
-    font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 /* El contenedor de las tarjetas de contacto, con un gap entre ellas */
 .contact-grid {
-    display: grid;
-    /* Esto hace que si hay espacio, se pongan en columnas, si no, una debajo de otra */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 20px;
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    margin-top: 30px;
 }
 
 /* Estilos base de cada tarjeta de contacto, con un fondo oscuro y un borde sutil */
 .contact-card {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(177, 0, 232, 0.2);
-    padding: 25px;
-    border-radius: 16px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(177, 0, 232, 0.2);
+    padding: 25px;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 /* Efecto de brillo y elevación al pasar el ratón */
 .contact-card:hover {
-    background: rgba(177, 0, 232, 0.08); 
-    border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(177, 0, 232, 0.15);
-    transform: translateY(-5px) scale(1.01);
+    background: rgba(177, 0, 232, 0.08); 
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(177, 0, 232, 0.15);
+    transform: translateY(-5px) scale(1.01);
 }
 
 /* Contenedor con el muñeco a la izquierda y las tarjetas a la derecha */
 .contact-wrapper-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
 }
 
 /* El avatar del muñeco, con un efecto de pixelado y un brillo lila detrás */
 .pixel-avatar {
-    margin-top: 27.5px;
-    width: 250px;
-    height: auto;
-    image-rendering: pixelated;
-    filter: drop-shadow(0 0 15px var(--accent));
-    animation: saltito 2s ease-in-out infinite;
+    margin-top: 27.5px;
+    width: 250px;
+    height: auto;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 15px var(--accent));
+    animation: saltito 2s ease-in-out infinite;
 }
 
 /* Animación de saltito para el avatar */
 @keyframes saltito {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 /* Ajuste para móvil */
 @media (max-width: 768px) {
-    .contact-wrapper-flex {
-        flex-direction: column;
-        text-align: center;
-    }
-    .pixel-avatar {
-        width: 170px;
-        margin-top: 10px;
-        margin-bottom: -4px;
-    }
+    .contact-wrapper-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    .pixel-avatar {
+        width: 170px;
+        margin-top: 10px;
+        margin-bottom: -4px;
+    }
 }
 
 /* Caja del Icono */
 .icon-box {
-    width: 55px;
-    height: 55px;
-    background: #0a0a0a; /* Fondo casi negro */
-    border-radius: 12px; /* Cuadrado redondeado (más moderno que el círculo perfecto) */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    color: var(--accent);
-    margin-right: 20px;
-    border: 1px solid rgba(177, 0, 232, 0.3);
-    box-shadow: 0 0 15px rgba(177, 0, 232, 0.1); /* Brillo interno suave */
-    transition: 0.3s;
+    width: 55px;
+    height: 55px;
+    background: #0a0a0a; /* Fondo casi negro */
+    border-radius: 12px; /* Cuadrado redondeado (más moderno que el círculo perfecto) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-right: 20px;
+    border: 1px solid rgba(177, 0, 232, 0.3);
+    box-shadow: 0 0 15px rgba(177, 0, 232, 0.1); /* Brillo interno suave */
+    transition: 0.3s;
 }
 
 /* El icono se llena de color y da un pequeño giro */
 .contact-card:hover .icon-box {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 0 20px var(--accent);
-    transform: rotate(-5deg);
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 20px var(--accent);
+    transform: rotate(-5deg);
 }
 
 /* Estilos base del contenedor de la información dentro de cada tarjeta de contacto */
 .info-box {
-    flex: 1;
-    min-width: 0;
+    flex: 1;
+    min-width: 0;
 }
 
 /* Títulos dentro de la info */
 .info-box h3 {
-    color: #fff;
-    font-size: 1.2rem;
-    margin: 0 0 5px 0;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 /* Textos dentro de la info */
 .info-box p {
-    color: #aaa;
-    font-size: 0.9rem;
-    font-family: 'Fira Code', monospace;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #aaa;
+    font-size: 0.85rem;
+    font-family: 'Fira Code', monospace;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* La flechita de cada tarjeta */
 .arrow {
-    margin-left: 15px;
-    color: #444;
-    font-size: 1.2rem;
-    transition: 0.3s;
+    margin-left: 15px;
+    color: #444;
+    font-size: 1.2rem;
+    transition: 0.3s;
 }
 
 /* La flechita se ilumina y se desplaza ligeramente a la derecha */
 .contact-card:hover .arrow {
-    color: var(--accent);
-    transform: translateX(5px);
-    text-shadow: 0 0 8px var(--accent);
+    color: var(--accent);
+    transform: translateX(5px);
+    text-shadow: 0 0 8px var(--accent);
 }
 
 /* --- FOOTER E ICONOS SOCIALES --- */
-footer { 
-    padding: 10px 0; 
-    text-align: center; 
-    color: var(--dim-text); 
+footer { 
+    padding: 10px 0; 
+    text-align: center; 
+    color: var(--dim-text); 
 }
 
 /* Contenedor de los enlaces sociales, con un gap entre ellos */
 .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 0;
-    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 0;
+    margin-bottom: 25px;
 }
 
 /* Estilo base de los enlaces sociales, con un tamaño grande para que sean llamativos */
 .social-links a {
-    color: var(--text);
-    font-size: 1.8rem;
-    transition: 0.3s;
+    color: var(--text);
+    font-size: 1.8rem;
+    transition: 0.3s;
 }
 
 /* Al pasar el ratón por los enlaces sociales, se iluminan y dan un efecto de zoom */
 .social-links a:hover {
-    color: var(--accent);
-    transform: scale(1.2);
-    filter: drop-shadow(0 0 8px var(--accent));
+    color: var(--accent);
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px var(--accent));
 }
