@@ -216,13 +216,13 @@ function crearPetalo() {
     const p = document.createElement('div');
     p.classList.add('petalo');
 
-    // Tamaño aleatorio para dar variedad (entre 6px y 16px de ancho)
-    const size = Math.random() * 10 + 6;
+    // Tamaño aleatorio para dar variedad (entre 10px y 16px de ancho)
+    const size = Math.random() * 6 + 10;
     p.style.width = size + 'px'; 
     p.style.height = (size * 1.4) + 'px';
 
     // Posición inicial aleatoria (nacen en la parte superior)
-    let left = Math.random() * (window.innerWidth * 1.5);
+    let left = Math.random() * (window.innerWidth * 3 - 100);
     let top = -30;
     let angulo = 0;
 
@@ -248,7 +248,7 @@ function crearPetalo() {
         p.style.transform = `rotate(${top * 0.5}deg)`;
         
         // Si el pétalo se sale de la pantalla, se borra
-        if (top < window.innerHeight && left > -20) {
+        if (top < window.innerHeight + 50 && left > -100) {
             requestAnimationFrame(caer);
         } else {
             p.remove();
