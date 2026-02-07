@@ -224,7 +224,6 @@ header {
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 3px;
-    top: auto;
     background: #000;
     border: 1px solid var(--accent);
     padding: 10px 15px;
@@ -334,6 +333,10 @@ header {
         padding: 6px 10px;
         border-radius: 8px;
     }
+    .bocadillo::before {
+        width: 7px;
+        height: 7px;
+    }
     .bocadillo::after {
         bottom: -5px;
         border-width: 5px 5px 0;
@@ -345,6 +348,10 @@ header {
         font-size: 0.5rem; 
         padding: 5px 9px;
         border-radius: 6px;
+    }
+    .bocadillo::before {
+        width: 6px;
+        height: 6px;
     }
     .bocadillo::after {
         bottom: -4px;
@@ -358,6 +365,10 @@ header {
         font-size: 0.4rem; 
         padding: 4px 8px;
         border-radius: 6px;
+    }
+    .bocadillo::before {
+        width: 5px;
+        height: 5px;
     }
     .bocadillo::after {
         bottom: -3px;
