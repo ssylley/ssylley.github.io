@@ -326,6 +326,26 @@ header {
     h1 { font-size: 3.2rem; letter-spacing: 4px; }
 }
 
+/* --- AJUSTE DEL BOCADILLO EN MÓVIL --- */
+@media (max-width: 768px) {
+    .bocadillo {
+        /* 1. Letra mucho más pequeña */
+        font-size: 0.8rem; 
+        
+        /* 2. Menos relleno para que la caja sea más compacta */
+        padding: 8px 12px;
+        
+        /* 3. Bordes menos redondeados para acorde al tamaño */
+        border-radius: 8px;
+    }
+
+    /* 5. Hacemos la flechita (el pico) más pequeña también */
+    .bocadillo::after {
+        bottom: -7px; /* Ajuste de posición */
+        border-width: 7px 7px 0; /* Triángulo más pequeño (antes era 8px) */
+    }
+}
+
 /* Tipografía del título */
 h1 {
     font-family: 'Cinzel', serif;
