@@ -345,7 +345,7 @@ header {
         padding: 4px 8px;
         border-radius: 6px;
         bottom: 80%; 
-        margin-bottom: 0;
+        margin-bottom: 1;
     }
     .bocadillo::after {
         bottom: -3px;
@@ -359,13 +359,11 @@ header {
         font-size: 0.4rem; 
         padding: 4px 8px;
         border-radius: 6px;
-    }
-    .bocadillo::before {
-        width: 5px;
-        height: 5px;
+        bottom: 75%; 
+        margin-bottom: 0;
     }
     .bocadillo::after {
-        bottom: -3px;
+        bottom: -2px;
         border-width: 3px 3px 0;
     }
 }
