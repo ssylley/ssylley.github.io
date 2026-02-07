@@ -3,389 +3,415 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="Ssylley | Fullstack Dev & Artist">
-        <meta property="og:description" content="Explora el universo gótico y digital de Ssylley.">
-        <meta property="og:image" content="https://ssylley.es/preview-image.jpg">
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <title>Ssylley | Dev & Artist</title>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Fira+Code:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
         
-        <style>
-            /* --- DISEÑO DEL SISTEMA --- */
-            :root {
-                --bg: #050505;
-                --card-bg: #0d0d0d;
-                --accent: #b100e8;
-                --text: #e0e0e0;
-                --dim-text: #666;
-                --shadow: 0 0 15px rgba(177, 0, 232, 0.3);
-            }
+        <meta property="og:title" content="Ssylley | Código con alma de artista">
+        <meta property="og:description" content="Creando software que refleje cariño y pasión. Desarrolladora apasionada por los detalles que hacen que una web cobre vida.">
+        <meta property="og:image" content="https://ssylley.es/preview-image.jpg">
 
-            /* --- BASE --- */
-            * { 
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                cursor: crosshair; 
-            }
+        <link rel="icon" type="image/x-icon" href="ssylley.ico">
+        <title>Ssylley | Portafolio</title>
 
-            body {
-                background-color: var(--bg);
-                color: var(--text);
-                font-family: 'Inter', sans-serif;
-                overflow-x: hidden;
-            }
-
-            canvas { 
-                position: fixed; 
-                top: 0; 
-                left: 0; 
-                z-index: -1; 
-            }
-            .container { 
-                max-width: 900px;
-                margin: 0 auto;
-                padding: 0 20px; 
-            }
-
-            /* --- HEADER Y GATO DURMIENTE --- */
-            header {
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-            }
-
-            .cat-container {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                padding-left: 120px;
-                margin-bottom: -50px; 
-                z-index: 100;
-                line-height: 0;
-            }
-
-            .gato-sleeping {
-                width: 12vw;
-                height: 12vw; 
-                max-width: 110px;
-                min-width: 60px; 
-                background-image: url('images/gatoSleeping1.png'); 
-                background-repeat: no-repeat;
-                background-size: contain; 
-                background-position: center bottom;
-                image-rendering: pixelated;
-                cursor: pointer;
-                filter: drop-shadow(0 0 5px var(--accent));
-                animation: respirar 4s ease-in-out infinite;
-                transition: none;
-            }
-
-            .gato-sleeping.despierto {
-                animation: none;
-                transform: scale(1.05);
-            }
-
-            @keyframes respirar {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-            }
-
-            h1 {
-                font-family: 'Cinzel', serif;
-                font-size: clamp(3rem, 10vw, 6rem);
-                color: var(--accent);
-                text-shadow: var(--shadow);
-                letter-spacing: 8px;
-                animation: pulse 4s infinite alternate;
-            }
-
-            @keyframes pulse {
-                from { opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent)); }
-                to { opacity: 1; filter: drop-shadow(0 0 20px var(--accent)); }
-            }
-
-            .typewriter {
-                font-family: 'Fira Code', monospace;
-                color: var(--dim-text);
-                font-size: 1.1rem;
-                margin-top: 10px;
-            }
-
-            /* --- SECCIONES Y CARDS --- */
-            section { 
-                padding: 80px 0; 
-                border-bottom: 1px solid #1a1a1a; 
-            }
-            
-            h2 {
-                font-family: 'Cinzel', serif;
-                font-size: 2rem;
-                color: var(--accent);
-                margin-bottom: 40px;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            h2::after { 
-                content: ""; 
-                flex: 1; 
-                height: 1px; 
-                background: linear-gradient(to right, var(--accent), transparent); 
-            }
-
-            .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-
-            .card {
-                background: var(--card-bg);
-                padding: 30px;
-                border-radius: 4px;
-                border: 1px solid #222;
-                transition: 0.4s ease;
-            }
-            
-            .card:hover {
-                border-color: var(--accent);
-                transform: translateY(-5px);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            }
-
-            .tag {
-                display: inline-block;
-                background: #1a1a1a;
-                padding: 4px 10px;
-                font-size: 0.75rem;
-                border-radius: 3px;
-                margin: 5px 5px 0 0;
-                font-family: 'Fira Code', monospace;
-            }
-
-            /* --- ELEMENTOS DECORATIVOS --- */
-            .petalo {
-                position: fixed;
-                background: linear-gradient(45deg, #000, #1a1a1a);
-                border-radius: 100% 0 80% 0;
-                filter: drop-shadow(0 0 2px rgba(177, 0, 232, 0.2));
-                z-index: 1;
-                pointer-events: none;
-            }
-            
-            #gato-guardian {
-                position: fixed;
-                bottom: 10px;
-                left: -50px;
-                font-size: 2.5rem;
-                z-index: 1000;
-                filter: drop-shadow(0 0 5px var(--accent));
-            }
-            
-            .bocadillo {
-                position: fixed;
-                background: var(--card-bg);
-                border: 1px solid var(--accent);
-                padding: 5px 10px;
-                border-radius: 8px;
-                font-size: 0.7rem;
-                display: none;
-                z-index: 1001;
-            }
-
-            footer { 
-                padding: 40px 0; 
-                text-align: center; 
-                color: var(--dim-text); 
-            }
-            
-            /* --- BREAKPOINTS: Optimización de la posición del gato--- */
-
-            /* 1. Pantallas Grandes / Laptops (Desktop) */
-            @media (min-width: 1025px) {
-                .cat-container { padding-left: 296px; margin-bottom: -51px; }
-                .gato-sleeping { width: 100px; height: 100px; }
-            }
-
-            /* 2. Tablets y Pantallas Medianas */
-            @media (max-width: 1024px) and (min-width: 851px) {
-                .cat-container { padding-left: 289px; margin-bottom: -50px; }
-                .gato-sleeping { width: 100px; height: 100px; }
-            }
-
-            /* 2. Tablets y Pantallas Medianas */
-            @media (max-width: 850px) and (min-width: 741px) {
-                .cat-container { padding-left: 250px; margin-bottom: -45px; }
-                .gato-sleeping { width: 87px; height: 87px; }
-            }
-
-            @media (max-width: 740px) and (min-width: 601px) {
-                .cat-container { padding-left: 232px; margin-bottom: -38px; }
-                .gato-sleeping { width: 75px; height: 75px; }
-            }
-
-            /* 3. Móvil Horizontal / Tablets pequeñas */
-            @media (max-width: 600px) {
-                .cat-container { padding-left: 160px; margin-bottom: -30px; }
-                .gato-sleeping { width: 65px; height: 65px; }
-                h1 { font-size: 3.2rem; letter-spacing: 4px; }
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Fira+Code:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
     </head>
     <body>
 
         <canvas id="bg-canvas"></canvas>
 
+        <div class="language-switch">
+            <input type="checkbox" id="toggle-lang">
+            <label for="toggle-lang" class="switch-label">
+                <span class="lang-text">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="slider"></div>
+            </label>
+        </div>
+
         <div class="container">
             <header>
                 <div class="cat-container">
+                    <div id="bocadillo-header" class="bocadillo"></div>
                     <div id="gato-pixel" class="gato-sleeping" onclick="despertar()"></div>
                 </div>
-                <h1>SSYLLEY</h1>
-                <div class="typewriter">> Fullstack Dev & Artist _</div>
+
+                <h1 class="glitch">SSYLLEY</h1>
+                <div data-translate="job_title" class="typewriter">> Fullstack Dev & Artist _</div>
             </header>
 
-            <section id="sobre-mi">
-                <h2>Sobre mí</h2>
-                <p>Soy una desarrolladora apasionada por crear software estéticamente impactante. En mi código busco la precisión de **Java** y la elegancia de **TypeScript**.</p>
+            <section id="sobre-mi" class="section">
+                <h2 data-translate="sobre_mi_titulo">Sobre mí</h2>
+
+                <div data-translate="sobre_mi_desc">
+                    <p>¡Hola! Mi nombre es <strong>Silvia</strong>.</p>
+                    <p>
+                        Mi camino hacia el desarrollo de software no fue el típico. 
+                        Aunque mi primera vocación fue la veterinaria, porque me apasionan los <strong>animales</strong>, la influencia 
+                        de mi padre informático y la búsqueda de una <strong>proyección profesional sólida</strong> me hicieron dar el 
+                        salto a la tecnología. Y fue la decisión correcta.
+                    </p>
+                    <p>
+                        Soy una desarrolladora que cree que el código no solo debe ser funcional, sino también una <strong>obra de arte</strong>. 
+                        Gracias a mis aficiones creativas como <strong>dibujar y editar vídeo</strong>, tengo una sensibilidad especial para unir la 
+                        <strong>lógica robusta del backend</strong> con <strong>interfaces cautivadoras</strong>.
+                    </p>
+                    <p>
+                        Cuando no estoy programando, me encontrarás disfrutando de <strong>videojuegos</strong>, escuchando música o creando contenido visual. 
+                        Esa mezcla de técnica y creatividad es lo que defino como mi sello personal.
+                    </p>
+                </div>
+            </section><section id="proyectos">
+                <h2 data-translate="proyectos_titulo">Proyectos destacados</h2>
+
+                <div class="grid">
+                    <div class="card project-card">
+
+                        <div class="project-image">
+                            <img src="images/petbuddy.png" alt="Preview Proyecto">
+                            
+                            <div class="overlay">
+                                <a href="https://www.figma.com/design/kTw5QfurFvpntTbon4Rxg4/PetBuddy---find-trusted-pet-sitters?t=yue9ItMyqGjDU14e-1" 
+                                    class="btn-neon"
+                                    target="_blank"
+                                >
+                                    <div class="cybr-btn">
+                                        <i class="fab fa-figma"></i> Figma
+                                    </div>
+                                </a>
+
+                                <a href="https://www.figma.com/proto/kTw5QfurFvpntTbon4Rxg4/PetBuddy---find-trusted-pet-sitters?t=yue9ItMyqGjDU14e-1" 
+                                    class="btn-neon"
+                                    target="_blank"
+                                >
+                                    <div class="cybr-btn">
+                                        <i class="fas fa-external-link-alt"></i> Demo
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <h3 data-translate="proyecto1_nombre">PetBuddy - Encuentra cuidadores confiables</h3>
+                            
+                            <p data-translate="proyecto1_desc">Prototipado funcional animado en Figma de una aplicación para móviles sobre mascotas. 
+                                                                Esta aplicación esta pensada para poder ofrecer servicios de todo tipo a los dueños de mascotas.
+                                                                Cuenta con apartados para:
+                            </p>
+
+                            <div class="feature-list" data-translate="petbuddy_lista">
+                                <li>Búsqueda de cuidadores</li>
+                                <li>Reservas y servicios</li>
+                                <li>Perfil de mascota</li>
+                                <li>Sistema de valoraciones</li>
+                                <li>Chat en tiempo real</li>
+                                <li>Gestión de reservas</li>
+                                <li>Tienda integrada</li>
+                                <li>Panel de usuario</li>
+                            </div>
+
+                            <div class="tech-stack" style="margin-top: 30px;">
+                                <span class="tag"><i class="fab fa-figma"></i> Figma</span>
+                                <span class="tag"><i class="fas fa-pen-nib"></i> UI/UX Design</span>
+                                <span class="tag"><i class="fas fa-play-circle"></i> Prototyping</span>
+                                <span class="tag"><i class="fas fa-route"></i> User Flow</span>
+                                <span class="tag"><i class="fas fa-vector-square"></i> Wireframing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section id="habilidades">
-                <h2>Habilidades</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>Backend</h3>
-                        <span class="tag">Java</span> <span class="tag">Spring Boot</span> <span class="tag">MySQL</span>
+            <section id="trayectoria" class="section">
+                <h2 data-translate="trayectoria_titulo">Trayectoria</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date" data-translate="time_line2">Marzo 2025 - Junio 2025</span>
+                            <h3 data-translate="exp2_titulo">Desarrolladora web (Prácticas)</h3>
+                            <h4 data-translate="exp2_lugar">Ayuntamiento de Veguillas de La Sierra</h4>
+                            <p data-translate="exp2_desc">Desarrollo de una página web institucional para el Ayuntamiento de Veguillas de La Sierra, 
+                                                        utilizando HTML, Next.js y Wix. La web incluye información sobre el municipio, servicios, eventos y 
+                                                        contacto, con un diseño moderno y responsive.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Frontend</h3>
-                        <span class="tag">Next.js</span> <span class="tag">TypeScript</span> <span class="tag">Tailwind</span>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date" data-translate="time_line1">2024 - Presente</span>
+                            <h3 data-translate="exp1_titulo">Estudiante de DAM</h3>
+                            <h4 data-translate="exp1_lugar">Colegio Salesiano Nuestra Señora del Pilar de Zaragoza</h4>
+                            <p data-translate="exp1_desc">Estudiando el ciclo superior de desarrollo de aplicaciones multiplataforma, Java, Bases de datos... 
+                                                        Participación en proyectos de desarrollo de aplicaciones, tanto individuales como en equipo, aplicando 
+                                                        metodologías ágiles y buenas prácticas de programación.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date" data-translate="time_line3">2022 - 2024</span>
+                            <h3 data-translate="exp3_titulo">Estudiante de bachillerato de ciencias de la salud</h3>
+                            <h4 data-translate="exp3_lugar">I.E.S. Pilar Lorengar</h4>
+                            <p data-translate="exp3_desc">Estudiante de bachillerato con enfoque en ciencias de la salud, desarrollando habilidades analíticas y 
+                                                        de investigación, además de una base sólida en biología, química y matemáticas. Participación en proyectos 
+                                                        científicos y actividades extracurriculares relacionadas con la salud.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="conocimientos" class="section">
+                <h2 data-translate="conocimientos_titulo">Conocimientos técnicos</h2>
+
+                <div class="leyenda">
+                    <div class="item-leyenda">
+                        <span class="punto" style="margin-left: 12px; background: var(--nivel-alto)"></span>
+                        <span data-translate="leyenda_fluido">Fluido</span>
+                    </div>
+
+                    <div class="item-leyenda">
+                        <span class="punto" style="background: var(--nivel-medio)"></span> 
+                        <span data-translate="leyenda_intermedio">Intermedio</span>
+                    </div>
+
+                    <div class="item-leyenda">
+                        <span class="punto" style="background: var(--nivel-basico)"></span> 
+                        <span data-translate="leyenda_basic">En aprendizaje</span>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="card special-glow" data-icon="&#xf085;">
+                        <h3 data-translate="card_lenguajes">> Lenguajes y backend</h3>
+                        <span class="tag alto"><i class="fab fa-java"></i> Java</span>
+                        <span class="tag medio"><i class="fab fa-python"></i> Python</span>
+                        <span class="tag basico"><i class="fas fa-code"></i> C#</span>
+                        <span class="tag alto"><i class="fab fa-windows"></i> ASP.NET</span>
+                        <span class="tag medio"><i class="fas fa-leaf"></i> Spring Boot</span> 
+                        <span class="tag alto"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="tag alto"><i class="fas fa-server"></i> SQL</span>
+                    </div>
+
+                    <div class="card special-glow" data-icon="&#xf121;">
+                        <h3 data-translate="card_front">> Frontend y web</h3>
+                        <span class="tag medio"><i class="fab fa-angular"></i> Angular</span> 
+                        <span class="tag medio"><i class="fab fa-js"></i> TypeScript</span>
+                        <span class="tag medio"><i class="fab fa-js-square"></i> JavaScript</span> 
+                        <span class="tag basico"><i class="fas fa-arrow-right"></i> Next.js</span>
+                        <span class="tag alto"><i class="fab fa-html5"></i> HTML</span>
+                        <span class="tag alto"><i class="fab fa-css3-alt"></i> CSS</span>
+                        <span class="tag alto"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                    </div>
+
+                    <div class="card special-glow" data-icon="&#xf1fc;">
+                        <h3 data-translate="card_design">> Diseño y prototipado</h3>
+                        <span class="tag alto"><i class="fab fa-figma"></i> Figma</span> 
+                        <span class="tag medio"><i class="fab fa-wix"></i> Wix</span>
+                        <span class="tag alto"><i class="fas fa-project-diagram"></i> Draw.io</span> 
+                    </div>
+
+                    <div class="card special-glow" data-icon="&#xf0b1;">
+                        <h3 data-translate="card_tools">> Herramientas y entornos</h3>
+                        <span class="tag basico"><i class="fab fa-git-alt"></i> Git</span> 
+                        <span class="tag medio"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="tag alto"><i class="fas fa-code"></i> VS Code</span> 
+                        <span class="tag alto"><i class="fab fa-windows"></i> VS 2022</span>
+                        <span class="tag alto"><i class="fas fa-terminal"></i> IntelliJ</span>
+                    </div>
+
+                    <div class="card special-glow" data-icon="&#xf233;">
+                        <h3 data-translate="card_systems">> Sistemas, redes y virtualización</h3>
+                        <span class="tag alto"><i class="fab fa-windows"></i> Windows</span> 
+                        <span class="tag basico"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="tag basico"><i class="fas fa-server"></i> VMware</span> 
+                        <span class="tag basico"><i class="fas fa-network-wired"></i> Packet Tracer</span>
+                    </div>
+
+                    <div class="card special-glow" data-icon="&#xf0ae;">
+                        <h3 data-translate="card_agile">> Metodologías ágiles</h3>
+                        <span class="tag medio"><i class="fas fa-users"></i> Scrum</span> 
+                        <span class="tag alto"><i class="fas fa-columns"></i> Kanban</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <h2 data-translate="skills_title">Habilidades</h2>
+                <div class="grid">
+                    <div class="skills-container">
+                        <div class="skill-box">
+
+                            <div class="skill-info">
+                                <span>
+                                    <i class="fas fa-brain"></i>
+                                    <span data-translate="skill_logic">Pensamiento lógico</span>
+                                </span>
+                                <span>90%</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%; --c: var(--neon-red)"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-box">
+
+                            <div class="skill-info">
+                                <span>
+                                    <i class="fas fa-users"></i> 
+                                    <span data-translate="skill_team">Trabajo en equipo</span>
+                                </span>
+                                <span>100% (MAX)</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%; --c: var(--neon-orange)"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-box">
+
+                            <div class="skill-info">
+                                <span>
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span data-translate="skill_creative">Creatividad</span>
+                                </span>
+                                <span>85%</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%; --c: var(--neon-yellow)"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-box">
+
+                            <div class="skill-info">
+                                <span>
+                                    <i class="fas fa-search"></i> 
+                                    <span data-translate="skill_problem">Resolución de problemas</span>
+                                </span>
+                                <span>94%</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 94%; --c: var(--neon-green)"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-box">
+
+                            <div class="skill-info">
+                                <span>
+                                    <i class="fas fa-book-open"></i> 
+                                    <span data-translate="skill_learn">Capacidad de aprendizaje</span>
+                                </span>
+                                <span>87%</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 87%; --c: var(--neon-blue)"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-box">
+
+                            <div class="skill-info">
+                                <span>
+                                    <i class="fas fa-clock"></i> 
+                                    <span data-translate="skill_time">Gestión del tiempo</span>
+                                </span>
+                                <span>82%</span>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 82%; --c: var(--neon-oceanblue)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="idiomas" class="section">
+                <h2 data-translate="idiomas_titulo">Idiomas</h2>
+
+                <div class="idiomas-grid">
+                    <div class="card special-glow lang-card">
+                        <div class="iso-code">ES</div>
+                        <div class="lang-details">
+                            <h4 data-translate="lang_es">Español</h4>
+                            <p data-translate="lang_es_desc">Nativo</p>
+                        </div>
+                        <div class="mini-bar">
+                            <div style="width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card special-glow lang-card">
+                        <div class="iso-code">EN</div>
+                        <div class="lang-details">
+                            <h4 data-translate="lang_en">Inglés</h4>
+                            <p data-translate="lang_en_desc">Nivel B1</p>
+                        </div>
+                        <div class="mini-bar"><div style="width: 50%"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="fade-in">
+                <h2 data-translate="contact_title">Contactar</h2>
+
+                <div class="card special-glow">
+                    <div class="contact-info">
+                        <p data-translate="contact_desc">
+                            🖤 ¿Tienes un proyecto en mente o quieres colaborar? 
+                            Puedes cominucarte conmigo a través de:
+                        </p>
+
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arnasledesmasilvia@gmail.com" class="contact-card" target="_blank">
+                            <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                            <div class="info-box">
+                                <h3>Email</h3>
+                                <p>arnasledesmasilvia@gmail.com</p>
+                            </div>
+                            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/silvia-al/" target="_blank" class="contact-card">
+                            <div class="icon-box"><i class="fab fa-linkedin-in"></i></div>
+                            <div class="info-box">
+                                <h3>LinkedIn</h3>
+                                <p data-translate="contact_linkedin_desc">Conectemos profesionalmente</p>
+                            </div>
+                            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+                        </a>
                     </div>
                 </div>
             </section>
 
             <footer>
-                <p>Hecho con 🖤 y código por Ssylley | 2026</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/silvia-al/" target="_blank" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ssylley" target="_blank" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arnasledesmasilvia@gmail.com" target="_blank" data-tooltip="Email">
+                        <div class="cybr-btn">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <p data-translate="footer_text">Hecho con 🖤 y código por Ssylley | 2026</p>
             </footer>
         </div>
-
-        <div id="gato-guardian" onclick="acariciar()">🐈‍⬛</div>
-        <div id="bocadillo" class="bocadillo"></div>
         
-        <script>
-            // 1. GATO DURMIENTE ANIMACIÓN
-            function despertar() {
-                const gato = document.getElementById('gato-pixel');
-                if (gato.classList.contains('despierto')) return;
-
-                gato.classList.add('despierto');
-
-                const frames = [
-                    'images/gatoSleeping1.png', // Ojos cerrados
-                    'images/gatoSleeping2.png', // Entornados
-                    'images/gatoSleeping3.png', // Casi abiertos
-                    'images/gatoSleeping4.png'  // Mirando a cámara
-                ];
-
-                let i = 0;
-                const abrirOjos = setInterval(() => {
-                    i++;
-                    if (i < frames.length) {
-                        gato.style.backgroundImage = `url('${frames[i]}')`;
-                    } else {
-                        clearInterval(abrirOjos);
-                        setTimeout(() => {
-                            cerrarOjos(gato, frames);
-                        }, 2000);
-                    }
-                }, 150);
-            }
-
-            function cerrarOjos(gato, frames) {
-                let i = frames.length - 1;
-                const animarCierre = setInterval(() => {
-                    i--;
-                    if (i >= 0) {
-                        gato.style.backgroundImage = `url('${frames[i]}')`;
-                    } else {
-                        clearInterval(animarCierre);
-                        gato.classList.remove('despierto');
-                    }
-                }, 150);
-            }
-
-            // 2. GATO GUARDIÁN (Caminante)
-            const gatoG = document.getElementById('gato-guardian');
-            const boca = document.getElementById('bocadillo');
-            let posX = -50; let dir = 1;
-            
-            function caminar() {
-                posX += 1.5 * dir;
-                gatoG.style.left = posX + 'px';
-                gatoG.style.transform = dir === 1 ? 'scaleX(1)' : 'scaleX(-1)';
-                if (posX > window.innerWidth + 50) dir = -1;
-                if (posX < -60) dir = 1;
-                boca.style.left = posX + 'px';
-                boca.style.bottom = '60px';
-                requestAnimationFrame(caminar);
-            }
-            
-            function acariciar() {
-                const msgs = ["¡Miau!", "Purrr...", "🖤", "Me gusta este código"];
-                boca.innerText = msgs[Math.floor(Math.random() * msgs.length)];
-                boca.style.display = 'block';
-                setTimeout(() => boca.style.display = 'none', 1500);
-            }
-
-            // 3. PÉTALOS Y ESTRELLAS (Efectos del fondo)
-            function crearPetalo() {
-                const p = document.createElement('div');
-                p.classList.add('petalo');
-                const size = Math.random() * 15 + 10;
-                p.style.width = size + 'px'; p.style.height = (size * 0.6) + 'px';
-                p.style.left = Math.random() * 100 + 'vw'; p.style.top = '-20px';
-                document.body.appendChild(p);
-                let top = -20;
-                function bajar() {
-                    top += 2;
-                    p.style.top = top + 'px';
-                    p.style.transform = `translateX(${Math.sin(top/20)*30}px) rotate(${top}deg)`;
-                    if (top < window.innerHeight) requestAnimationFrame(bajar); else p.remove();
-                }
-                bajar();
-            }
-
-            // Sistema del campo de estrellas
-            const canvas = document.getElementById('bg-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            let stars = Array(80).fill().map(() => ({
-                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-                size: Math.random() * 2, speed: Math.random() * 0.3
-            }));
-            
-            function animateStars() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#b100e8';
-                stars.forEach(s => {
-                    ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill();
-                    s.y -= s.speed; if(s.y < 0) s.y = canvas.height;
-                });
-                requestAnimationFrame(animateStars);
-            }
-
-            /* --- INICIALIZACIÓN --- */
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-            
-            caminar();
-            animateStars();
-            setInterval(crearPetalo, 400);
-        </script>
+        <script src="script.js"></script>
     </body>
+    
+    <!-- Cargar las imágenes en el html para evitar cortes negros entre ellas -->
     <div style="display:none;">
         <img src="images/gatoSleeping1.png">
         <img src="images/gatoSleeping2.png">
