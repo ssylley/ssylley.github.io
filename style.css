@@ -848,7 +848,7 @@ h2::after { 
         inset 0 0 30px rgba(255, 0, 191, 0.1);
 }
 
-/* --- Etiquetas de cada card --- */
+/* Etiquetas de cada card */
 .tag {
     display: inline-block;
     background: rgba(255, 255, 255, 0.03);
