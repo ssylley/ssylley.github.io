@@ -126,7 +126,7 @@ const translations = {
         trayectoria_titulo: "Trayectory",
         time_line1: "2024 - Present",
         exp1_titulo: "DAM student",
-        exp1_lugar: "Colegio Salesiano Nuestra Señora del Pilar de Zaragoza",
+        exp1_lugar: "Salesian School Our Lady of the Pillar of Zaragoza",
         exp1_desc: "Studying the higher cycle of multiplatform application development, Java, Databases... " +
                     "Participation in application development projects, both individual and team-based, applying agile " + 
                     "methodologies and good programming practices.",
