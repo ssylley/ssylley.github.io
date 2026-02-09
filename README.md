@@ -6,7 +6,7 @@
 
 ![Estado](https://img.shields.io/badge/Estado-Terminado-success?style=for-the-badge&color=b100e8)
 ![Licencia](https://img.shields.io/badge/Licencia-MIT-blue?style=for-the-badge)
-![Tiempo](https://img.shields.io/badge/Tiempo_Dev-112h-blueviolet?style=for-the-badge)
+![Tiempo](https://img.shields.io/badge/Tiempo_Dev-114h-blueviolet?style=for-the-badge)
 ![AI](https://img.shields.io/badge/AI-Powered-ff00e8?style=for-the-badge)
 
 Bienvenido al repositorio de mi portfolio personal. Este proyecto es una web **SPA (Single Page Application)** diseñada para mostrar mi trayectoria, proyectos, conocimientos y habilidades con una estética inmersiva, que refleje mi personalidad y gustos.
