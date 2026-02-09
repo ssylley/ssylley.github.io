@@ -74,9 +74,11 @@ El proyecto está construido con tecnologías web estándar (Vanilla), sin depen
  ┣ 📜 ssylley.ico        # Icono representativo
  ┣ 📜 style.css          # Estilos, variables y adaptabilidad móvil
  ┗ 📜 README.md          # Documentación
-
+```
 ---
 
-> "114 horas de código humano, amplificado por inteligencia artificial."
-
-**© 2026 Ssylley Portfolio.**
+<div align="center">
+   > "114 horas de código humano, amplificado por inteligencia artificial."
+   
+   **© 2026 Ssylley Portfolio.**
+<div>
