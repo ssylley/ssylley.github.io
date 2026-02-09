@@ -69,11 +69,11 @@ El proyecto está construido con tecnologías web estándar (Vanilla), sin depen
 📦 portfolio-ssylley
  ┣ 📂 images/            # Assets (gato sprites, avatar, proyectos, miniaturas)
  ┣ 📜 CNAME              # Estructura principal
+ ┣ 📜 README.md          # Documentación
  ┣ 📜 index.html         # Estructura principal
  ┣ 📜 script.js          # Lógica (traducción, animaciones, pétalos)
  ┣ 📜 ssylley.ico        # Icono representativo
- ┣ 📜 style.css          # Estilos, variables y adaptabilidad móvil
- ┗ 📜 README.md          # Documentación
+ ┗ 📜 style.css          # Estilos, variables y adaptabilidad móvil
 ```
 ---
 
