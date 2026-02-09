@@ -77,10 +77,11 @@ El proyecto está construido con tecnologías web estándar (Vanilla), sin depen
 ```
 ---
 
+<br />
 <div align="center">
 
   <em>"114 horas de código humano, amplificado por inteligencia artificial"</em>
-  <br>
+  <br /><br />
   <strong>© 2026 Ssylley Portfolio.</strong>
 
 </div>
