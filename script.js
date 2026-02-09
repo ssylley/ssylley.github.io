@@ -181,7 +181,7 @@ const translations = {
         contact_linkedin_desc: "Conectemos profesionalmente",
 
         // Footer
-        footer_text: "Hecho con 🖤 y código por Ssylley | 2026"
+        footer_text: "© Hecho con 🖤 por Ssylley | 2026"
     },
     en: {
         // Header
@@ -271,7 +271,7 @@ const translations = {
         contact_linkedin_desc: "Let's connect professionally",
 
         // Footer
-        footer_text: "Made with 🖤 and code by Ssylley | 2026"
+        footer_text: "© Made with 🖤 by Ssylley | 2026"
     }
 };
 
