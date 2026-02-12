@@ -108,7 +108,7 @@ const translations = {
                         "Gracias a mis aficiones creativas como <strong>dibujar y editar vídeo</strong>, tengo una sensibilidad especial para unir la " +
                         "<strong>lógica robusta del backend</strong> con <strong>interfaces cautivadoras</strong>.</p>" +
                         "<p>Cuando no estoy programando, me encontrarás disfrutando de <strong>videojuegos</strong>, escuchando música o creando contenido visual. " +
-                        "Esa mezcla de técnica y creatividad es lo que defino como mi sello personal.</p>",
+                        "Esa mezcla de técnica y creatividad es lo que defino como <strong>mi sello personal</strong>.</p>",
 
         // Proyectos
         proyectos_titulo: "Proyectos destacados",
@@ -198,7 +198,7 @@ const translations = {
                         "Thanks to my creative hobbies like <strong>drawing and video editing</strong>, I have a special sensitivity for uniting " +
                         "<strong>robust backend logic</strong> with <strong>captivating interfaces</strong>.</p>" +
                         "<p>When I'm not programming, you'll find me enjoying <strong>video games</strong>, listening to music, or creating visual content. " +
-                        "That mix of technique and creativity is what I define as my personal signature.</p>",
+                        "That mix of technique and creativity is what I define as <strong>my personal signature</strong>.</p>",
         
         // Projects
         proyectos_titulo: "Featured projects",
