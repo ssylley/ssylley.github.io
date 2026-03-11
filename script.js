@@ -133,7 +133,7 @@ const translations = {
         exp1_desc: "Estudiando el ciclo superior de desarrollo de aplicaciones multiplataforma, Java, Bases de datos..." +
                     " Participación en proyectos de desarrollo de aplicaciones, tanto individuales como en equipo, aplicando metodologías "+ 
                     "ágiles y buenas prácticas de programación.",
-        time_line2: "Marzo 2025 - Junio 2025",
+        time_line2: "Mayo 2025 - Junio 2025",
         exp2_titulo: "Desarrolladora web (Prácticas)",
         exp2_lugar: "Ayuntamiento de Veguillas de La Sierra",
         exp2_desc: "Desarrollo de una página web institucional para el Ayuntamiento de Veguillas de La Sierra, utilizando HTML, Next.js y Wix. " +
@@ -223,7 +223,7 @@ const translations = {
         exp1_desc: "Studying the higher cycle of multiplatform application development, Java, Databases... " +
                     "Participation in application development projects, both individual and team-based, applying agile " + 
                     "methodologies and good programming practices.",
-        time_line2: "March 2025 - June 2025",
+        time_line2: "May 2025 - June 2025",
         exp2_titulo: "Web developer (Practices)",
         exp2_lugar: "Veguillas de La Sierra City Council",
         exp2_desc: "Development of an institutional website for the Veguillas de La Sierra City Council, using HTML, Next.js, and Wix. " +
